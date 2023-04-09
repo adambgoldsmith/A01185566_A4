@@ -11,7 +11,8 @@ def print_intro_lore() -> None:
           f"You quickly throw on your uniform and run out of the cabin towards the helm of the ship.\n"
           f"With sails at full mast, you gently glide out into the cloudy blue.\n\n"
           f"Your adventure begins here...")
-    
+
+
 def print_end_lore() -> None:
     """
     Print end lore
@@ -23,6 +24,7 @@ def print_end_lore() -> None:
           f"With your old friend by your side, you set off once again to your home in Skyport.\n\n"
           f"~THE END~\n\n"
           f"Thanks for playing!")
+
 
 def get_region(region_number: int) -> list:
     """
@@ -38,7 +40,7 @@ def get_region(region_number: int) -> list:
             f"The several thousand clouds here mesmerize you", 
             f"The sun reflects off of the glittering clouds that surround you.",
             f"A flock of seagulls fly overhead, squawking loudly.",
-            f"The blue sky is dotted with fluffy white clouds. The view is breathtaking.",],
+            f"The blue sky is dotted with fluffy white clouds. The view is breathtaking."],
         1: [f"Fogmourne",
             f"There is only fog... As far as the eye can see...", 
             f"You think you hear something slither through the dense fog, but you see nothing.",
