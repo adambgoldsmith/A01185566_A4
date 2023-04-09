@@ -1,5 +1,6 @@
 import random
 
+
 def chest(character: dict) -> None:
     """
     Start chest event
@@ -15,9 +16,12 @@ def chest(character: dict) -> None:
     user_answer = user_puzzle_choice()
     if user_answer == puzzle_answer:
         character['inventory']['gold'] += 50
-        print(f"You hear a loud click. The chest swings open to reveal 50 gold coins! You collect your spoils and head back to your ship.")
+        print(f"You hear a loud click. The chest swings open to reveal 50 gold coins!"
+              f" You collect your spoils and head back to your ship.")
     else:
-        print(f"That doesn't look right. The gemstones fade of their colours. You head back to your ship empty handed...")
+        print(f"That doesn't look right. The gemstones fade of their colours."
+              f" You head back to your ship empty handed...")
+
 
 def generate_pattern() -> str:
     """
@@ -38,25 +42,27 @@ def generate_pattern() -> str:
             pattern += "V"
     return pattern
 
+
 def generate_puzzle() -> str:
     """
     Generate chest puzzle
 
-    **Note: This function is not complete. It is a work in progress.**
+    :return: Answer as a string
     """
     pattern = generate_pattern()
     full_pattern = pattern * 2
     take_away = random.randint(2, 5)
-    missing_pattern = full_pattern[:len(full_pattern) - (take_away)]
+    missing_pattern = full_pattern[:len(full_pattern) - take_away]
     print(missing_pattern)
-    answer = full_pattern[len(full_pattern) - (take_away)]
+    answer = full_pattern[len(full_pattern) - take_away]
     return answer
+
 
 def user_puzzle_choice() -> str:
     """
     Get user answer
 
-    **Note: This function is not complete. It is a work in progress.**
+    :return: User answer as a string
     """
     user_choice = input(f"What is the next gemstone in the pattern?\n"
                         f"1. O (topaz)\n"
