@@ -40,6 +40,19 @@ def boss_description(boss: dict, region: list) -> None:
     :precondition: boss must be a dictionary created by the generate_boss() function
     :precondition: Region must be a list created by the get_region() function
     :postcondition: print a description of the boss
+
+    >>> boss_test = {'name': 'Nebulous, The Mist Colossus'}
+    >>> region_test = ['Fogmourne']
+    >>> boss_description(boss_test, region_test)
+    As you near the far reaches of Fogmourne you sense the presence of an immense darkness.
+    From beneath the clouds, Nebulous, The Mist Colossus, swoops into view and blocks your path.
+    You prepare for a tough battle...
+    >>> boss_test = {'name': 'Odeza, The Venom Wyvern'}
+    >>> region_test = ['The Cloud Expanse']
+    >>> boss_description(boss_test, region_test)
+    As you near the far reaches of The Cloud Expanse you sense the presence of an immense darkness.
+    From beneath the clouds, Odeza, The Venom Wyvern, swoops into view and blocks your path.
+    You prepare for a tough battle...
     """
     print(f"As you near the far reaches of {region[0]} you sense the presence of an immense darkness.\n"
           f"From beneath the clouds, {boss['name']}, swoops into view and blocks your path.\n"
