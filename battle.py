@@ -65,6 +65,14 @@ def generate_enemy_ship() -> dict:
 
 
 def get_user_battle_choice(enemy: dict) -> str:
+    """
+    Get user battle choice
+
+    :param enemy: A dictionary
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :postcondition: Get the users battle choice
+    :return: The users choice as a string
+    """
     while True:
         user_choice = input(f'What is your next move, captain?\n'
                             f'1. Fire cannons\n'
@@ -79,6 +87,13 @@ def get_user_battle_choice(enemy: dict) -> str:
 
 
 def attempt_repair_kit(character: dict) -> None:
+    """
+    Attempt ship repair
+
+    :param character: A dictionary
+    :precondition: Character must be a dictionary created by the create_character() function
+    :postcondition: Attempt to repair the characters ship
+    """
     if character['inventory']['repair_kits'] > 0:
         character['inventory']['repair_kits'] -= 1
         repair_ship(character)
@@ -86,7 +101,16 @@ def attempt_repair_kit(character: dict) -> None:
         print(f"You do not have any repair kits, captain! Please try again.")
 
 
-def attempt_air_barrage(character, enemy):
+def attempt_air_barrage(character: dict, enemy: dict) -> None:
+    """
+    Attempt air barrage
+
+    :param character: A dictionary
+    :param enemy: A dictionary
+    :precondition: Character must be a dictionary created by the create_character() function
+    :precondition: Enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
+    :postcondition: Attempt an air barrage attack
+    """
     if character['inventory']['flux'] >= 2:
         character['inventory']['flux'] -= 2
         air_barrage(character, enemy)
@@ -94,81 +118,50 @@ def attempt_air_barrage(character, enemy):
         print(f"You do not have enough flux to use this ability, captain! Please try again.")
 
 
-def attempt_retreat(character, enemy):
+def attempt_retreat(character: dict, enemy: dict) -> bool:
+    """
+    Attempt retreat
+
+    :param character: A dictionary
+    :param enemy: A dictionary
+    :precondition: Character must be a dictionary created by the create_character() function
+    :precondition: Enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
+    :postcondition: Attempt to retreat from battle
+    :return: Success or failed retreat attempt as a boolean
+    """
     retreat(character, enemy)
     if enemy['type'] == 'regular':
         return True
+    else:
+        return False
 
 
 def user_battle_selection(character, enemy):
     """
-    Get user battle choice
+    Execute user battle selection
 
     :param character: A dictionary
     :param enemy: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
-    :postcondition: Get user battle choice
+    :postcondition: Execute the users battle choice
     :return: A boolean representing whether the user retreated or not
     """
-    choice = get_user_battle_choice(enemy)
-    if choice == '1':
-        fire_cannons(character, enemy)
-    elif choice == '2':
-        attempt_repair_kit(character)
-    elif choice == '3':
-        attempt_air_barrage(character, enemy)
-    elif choice == '4':
-        attempt_retreat(character, enemy)
-    elif choice == '0':
-        check_inventory(character)
-    return False
-
-
-# def user_battle_choice(character: dict, enemy: dict) -> bool:
-#     """
-#     Get user battle choice
-#
-#     :param character: A dictionary
-#     :param enemy: A dictionary
-#     :precondition: character must be a dictionary created by the create_character() function
-#     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
-#     :postcondition: Get user battle choice
-#     :return: A boolean representing whether the user retreated or not
-#     """
-#     while True:
-#         user_choice = input(f'What is your next move, captain?\n'
-#                             f'1. Fire cannons\n'
-#                             f'2. Repair ship (-1 repair kit)\n'
-#                             f'3. Air Barrage (-2 flux)\n'
-#                             f"4. Retreat (-{enemy['attack_power']} HP)\n"
-#                             f'0. Check inventory\n')
-#         if user_choice == '1':
-#             fire_cannons(character, enemy)
-#             break
-#         elif user_choice == '2':
-#             if character['inventory']['repair_kits'] > 0:
-#                 character['inventory']['repair_kits'] -= 1
-#                 repair_ship(character)
-#                 break
-#             else:
-#                 print(f"You do not have any repair kits, captain! Please try again.")
-#         elif user_choice == '3':
-#             if character['inventory']['flux'] >= 2:
-#                 character['inventory']['flux'] -= 2
-#                 air_barrage(character, enemy)
-#                 break
-#             else:
-#                 print(f"You do not have enough flux to use this ability, captain! Please try again.")
-#         elif user_choice == '4':
-#             retreat(character, enemy)
-#             if enemy['type'] == 'regular':
-#                 return True
-#         elif user_choice == '0':
-#             check_inventory(character)
-#         else:
-#             print("I don't understand your order, captain! Please try again.")
-#     return False
+    while True:
+        choice = get_user_battle_choice(enemy)
+        if choice == '0':
+            check_inventory(character)
+            continue
+        elif choice == '1':
+            fire_cannons(character, enemy)
+        elif choice == '2':
+            attempt_repair_kit(character)
+        elif choice == '3':
+            attempt_air_barrage(character, enemy)
+        elif choice == '4':
+            retreated = attempt_retreat(character, enemy)
+            return retreated
+        return False
 
 
 def fire_cannons(character: dict, enemy: dict) -> None:
