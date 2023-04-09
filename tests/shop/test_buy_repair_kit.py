@@ -1,7 +1,12 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from shop import buy_repair_kit
 from unittest.mock import patch
+
 
 class TestBuyRepairKit(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
