@@ -1,15 +1,7 @@
 from events import *
-from character import *
 from lore import *
 from board import *
 
-def dev_tools(character):
-    character['health'] = 1000
-    character['attack_power'] = 1000
-    character['ability_power'] = 1000
-    character['inventory']['flux'] = 1000
-    character['inventory']['repair_kits'] = 1000
-    character['inventory']['gold'] = 1000
 
 def game() -> None:
     """
@@ -17,7 +9,6 @@ def game() -> None:
     """
     print_intro_lore()
     character = create_character()
-    dev_tools(character)
     regions_cleared = 0
     while regions_cleared < 3:
         rows = 5
@@ -49,11 +40,13 @@ def game() -> None:
     else:
         print(f"\n\nYour airship has been destroyed... Game over.")
 
+
 def main():
     """
     Drive the program
     """
     game()
+
 
 if __name__ == '__main__':
     main()
