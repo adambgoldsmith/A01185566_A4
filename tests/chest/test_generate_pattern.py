@@ -1,6 +1,11 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from chest import generate_pattern
 from unittest.mock import patch
+
 
 class TestGeneratePattern(TestCase):
     @patch('random.choice', side_effect=['ruby', 'topaz', 'sapphire', 'topaz', 'emerald', 'ruby'])
@@ -22,4 +27,3 @@ class TestGeneratePattern(TestCase):
     @patch('random.choice', side_effect=['sapphire', 'sapphire', 'sapphire', 'sapphire', 'sapphire', 'sapphire'])
     def test_generate_pattern_all_sapphire(self, _):
         self.assertEqual('VVVVVV', generate_pattern())
-

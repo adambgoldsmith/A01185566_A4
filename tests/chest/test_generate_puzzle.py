@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from chest import generate_puzzle

@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from chest import user_puzzle_choice
 from unittest.mock import patch
@@ -27,4 +31,3 @@ class TestUserPuzzleChoice(TestCase):
     @patch('builtins.input', side_effect=['test'])
     def test_user_puzzle_choice_not_a_number(self, _):
         self.assertEqual('incorrect', user_puzzle_choice())
-
