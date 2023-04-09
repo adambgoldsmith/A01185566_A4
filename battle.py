@@ -7,30 +7,43 @@ def battle(character: dict) -> None:
     Start battle event
 
     :param character: A dictionary
-    :precondition: character must be a dictionary created by the create_character() function
+    :precondition: Character must be a dictionary created by the create_character() function
     :postcondition: Commence an enemy battle sequence
     """
     print(f"-------------------------")
     print(f"You spot a hostile air ship on the horizon. As the ship gets closer,"
           f" your eyes are drawn to the large skull\n"
           f"and crossbones crudely painted on it's side. Pirates! You ready your cannons for battle.")
-    enemy_ship = generate_enemy_ship()
-    print(f"The enemy ship has {enemy_ship['health']} health and {enemy_ship['attack_power']} attack power.")
-    while enemy_ship['health'] > 0:
-        retreated = user_battle_choice(character, enemy_ship)
-        if retreated:
-            break
-        if enemy_ship['health'] > 0:
-            enemy_attack(character, enemy_ship)
-            if not is_alive(character):
-                break
-    if enemy_ship['health'] <= 0:
+    enemy = generate_enemy_ship()
+    print(f"The enemy ship has {enemy['health']} health and {enemy['attack_power']} attack power.")
+    battle_loop(character, enemy)
+    if enemy['health'] <= 0:
         character['inventory']['gold'] += 50
         character['experience'] += 25
         print(f"The hostile ship plummets through the clouds and explodes in a fiery ball of flames."
               f" Well done, captain! You stand victorious!\n"
               f"You gain 50 gold coins for your victory.\n"
               f"You gain 25 experience points for your victory.")
+
+
+def battle_loop(character: dict, enemy: dict) -> None:
+    """
+    Start battle loop
+
+    :param character: A dictionary
+    :param enemy: A dictionary
+    :precondition: character must be a dictionary created by the create_character() function
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :postcondition: Start a new battle loop
+    """
+    while enemy['health'] > 0:
+        retreated = user_battle_selection(character, enemy)
+        if retreated:
+            break
+        if enemy['health'] > 0:
+            enemy_attack(character, enemy)
+            if not is_alive(character):
+                break
 
 
 def generate_enemy_ship() -> dict:
@@ -51,7 +64,43 @@ def generate_enemy_ship() -> dict:
     return enemy_ship
 
 
-def user_battle_choice(character: dict, enemy: dict) -> bool:
+def get_user_battle_choice(enemy: dict) -> str:
+    while True:
+        user_choice = input(f'What is your next move, captain?\n'
+                            f'1. Fire cannons\n'
+                            f'2. Repair ship (-1 repair kit)\n'
+                            f'3. Air Barrage (-2 flux)\n'
+                            f"4. Retreat (-{enemy['attack_power']} HP)\n"
+                            f'0. Check inventory\n')
+        if user_choice in ['1', '2', '3', '4', '0']:
+            return user_choice
+        else:
+            print("I don't understand your order, captain! Please try again.")
+
+
+def attempt_repair_kit(character: dict) -> None:
+    if character['inventory']['repair_kits'] > 0:
+        character['inventory']['repair_kits'] -= 1
+        repair_ship(character)
+    else:
+        print(f"You do not have any repair kits, captain! Please try again.")
+
+
+def attempt_air_barrage(character, enemy):
+    if character['inventory']['flux'] >= 2:
+        character['inventory']['flux'] -= 2
+        air_barrage(character, enemy)
+    else:
+        print(f"You do not have enough flux to use this ability, captain! Please try again.")
+
+
+def attempt_retreat(character, enemy):
+    retreat(character, enemy)
+    if enemy['type'] == 'regular':
+        return True
+
+
+def user_battle_selection(character, enemy):
     """
     Get user battle choice
 
@@ -62,39 +111,64 @@ def user_battle_choice(character: dict, enemy: dict) -> bool:
     :postcondition: Get user battle choice
     :return: A boolean representing whether the user retreated or not
     """
-    while True:
-        user_choice = input(f'What is your next move, captain?\n'
-                            f'1. Fire cannons\n'
-                            f'2. Repair ship (-1 repair kit)\n'
-                            f'3. Air Barrage (-2 flux)\n'
-                            f"4. Retreat (-{enemy['attack_power']} HP)\n"
-                            f'0. Check inventory\n')
-        if user_choice == '1':
-            fire_cannons(character, enemy)
-            break
-        elif user_choice == '2':
-            if character['inventory']['repair_kits'] > 0:
-                character['inventory']['repair_kits'] -= 1
-                repair_ship(character)
-                break
-            else:
-                print(f"You do not have any repair kits, captain! Please try again.")
-        elif user_choice == '3':
-            if character['inventory']['flux'] >= 2:
-                character['inventory']['flux'] -= 2
-                air_barrage(character, enemy)
-                break
-            else:
-                print(f"You do not have enough flux to use this ability, captain! Please try again.")
-        elif user_choice == '4':
-            retreat(character, enemy)
-            if enemy['type'] == 'regular':
-                return True
-        elif user_choice == '0':
-            check_inventory(character)
-        else:
-            print("I don't understand your order, captain! Please try again.")
+    choice = get_user_battle_choice(enemy)
+    if choice == '1':
+        fire_cannons(character, enemy)
+    elif choice == '2':
+        attempt_repair_kit(character)
+    elif choice == '3':
+        attempt_air_barrage(character, enemy)
+    elif choice == '4':
+        attempt_retreat(character, enemy)
+    elif choice == '0':
+        check_inventory(character)
     return False
+
+
+# def user_battle_choice(character: dict, enemy: dict) -> bool:
+#     """
+#     Get user battle choice
+#
+#     :param character: A dictionary
+#     :param enemy: A dictionary
+#     :precondition: character must be a dictionary created by the create_character() function
+#     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
+#     :postcondition: Get user battle choice
+#     :return: A boolean representing whether the user retreated or not
+#     """
+#     while True:
+#         user_choice = input(f'What is your next move, captain?\n'
+#                             f'1. Fire cannons\n'
+#                             f'2. Repair ship (-1 repair kit)\n'
+#                             f'3. Air Barrage (-2 flux)\n'
+#                             f"4. Retreat (-{enemy['attack_power']} HP)\n"
+#                             f'0. Check inventory\n')
+#         if user_choice == '1':
+#             fire_cannons(character, enemy)
+#             break
+#         elif user_choice == '2':
+#             if character['inventory']['repair_kits'] > 0:
+#                 character['inventory']['repair_kits'] -= 1
+#                 repair_ship(character)
+#                 break
+#             else:
+#                 print(f"You do not have any repair kits, captain! Please try again.")
+#         elif user_choice == '3':
+#             if character['inventory']['flux'] >= 2:
+#                 character['inventory']['flux'] -= 2
+#                 air_barrage(character, enemy)
+#                 break
+#             else:
+#                 print(f"You do not have enough flux to use this ability, captain! Please try again.")
+#         elif user_choice == '4':
+#             retreat(character, enemy)
+#             if enemy['type'] == 'regular':
+#                 return True
+#         elif user_choice == '0':
+#             check_inventory(character)
+#         else:
+#             print("I don't understand your order, captain! Please try again.")
+#     return False
 
 
 def fire_cannons(character: dict, enemy: dict) -> None:
