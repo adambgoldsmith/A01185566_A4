@@ -7,7 +7,7 @@ def create_character() -> dict:
     character = {
         'X-coordinate': 0,
         'Y-coordinate': 0,
-        'name': 'Captain Magnus Selwood', # Add custom name?
+        'name': 'Captain Magnus Selwood',  # unused, but interesting lore
         'level': 1,
         'experience': 0,
         'max_health': 100,
@@ -22,6 +22,7 @@ def create_character() -> dict:
     }
     return character
 
+
 def is_alive(character: dict) -> bool:
     """
     Check if alive
@@ -30,12 +31,20 @@ def is_alive(character: dict) -> bool:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: verify if character is alive
     :return: verification if character is alive as a boolean
+
+    >>> character_test = {'health': 50}
+    >>> is_alive(character_test)
+    True
+    >>> character_test = {'health': 0}
+    >>> is_alive(character_test)
+    False
     """
     if character['health'] > 0:
         return True
     else:
         return False
-    
+
+
 def check_inventory(character: dict) -> None:
     """
     Check inventory
@@ -46,9 +55,9 @@ def check_inventory(character: dict) -> None:
     """
     print(f"Flux: {character['inventory']['flux']}\n"
           f"Repair Kits: {character['inventory']['repair_kits']}\n"
-          f"Gold: {character['inventory']['gold']}")
-    print()
-    
+          f"Gold: {character['inventory']['gold']}\n")
+
+
 def level_up(character: dict) -> None:
     """
     Level up
@@ -66,9 +75,11 @@ def level_up(character: dict) -> None:
         character['attack_power'] += 5
         character['ability_power'] += 5
         print(f"You have leveled up! Your ship's cannons are now stronger and your hull has been reinforced!\n"
-              f"You are now level {character['level']}! Your max health is now {character['max_health']} and your attack power is now {character['attack_power']}.\n"
+              f"You are now level {character['level']}! Your max health is now {character['max_health']} and "
+              f"your attack power is now {character['attack_power']}.\n"
               f"Your health has been restored to {character['health']}.\n")
-        
+
+
 def display_stats(character: dict) -> None:
     """
     Display stats
@@ -76,8 +87,16 @@ def display_stats(character: dict) -> None:
     :param character: a dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: display character's stats
+
+    >>> character_test = {'health': 100, 'max_health': 100, 'experience': 50, 'level': 1}
+    >>> display_stats(character_test)
+    HP: 100/100 |~| XP: 50/100 |~| Lvl: 1
+    <BLANKLINE>
     """
-    print(f"HP: {character['health']}/{character['max_health']} |~| XP: {character['experience']}/100 |~| Lvl: {character['level']}\n")
+    print(f"HP: {character['health']}/{character['max_health']} |~|"
+          f" XP: {character['experience']}/100 |~|"
+          f" Lvl: {character['level']}\n")
+
 
 def check_if_achieved_goal(board: dict, character: dict) -> bool:
     """
@@ -89,6 +108,15 @@ def check_if_achieved_goal(board: dict, character: dict) -> bool:
     :precondition: character must be a dictionary created by the make_character() function
     :postcondition: verify if player has reached the goal
     :return: verification if player has reached the goal as a boolean
+
+    >>> board_test = {(0, 0): 'empty', (0, 1): 'empty', (1, 0): 'empty', (1, 1): 'empty'}
+    >>> character_test = {'X-coordinate': 0, 'Y-coordinate': 0}
+    >>> check_if_achieved_goal(board_test, character_test)
+    False
+    >>> board_test = {(0, 0): 'empty', (0, 1): 'empty', (1, 0): 'empty', (1, 1): 'empty'}
+    >>> character_test = {'X-coordinate': 1, 'Y-coordinate': 1}
+    >>> check_if_achieved_goal(board_test, character_test)
+    True
     """
     character_location = (character['X-coordinate'], character['Y-coordinate'])
     if character_location == list(board.keys())[-1]:
