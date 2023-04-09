@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from character import level_up
@@ -6,7 +10,7 @@ from unittest.mock import patch
 
 class TestLevelUp(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_level_up_less_than_100_exp(self, mock_output):
+    def test_level_up_less_than_100_exp_output(self, mock_output):
         character = {
             'level': 1,
             'experience': 0,
@@ -21,7 +25,7 @@ class TestLevelUp(TestCase):
         self.assertEqual(expected_output, level_up_output)
 
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_level_up_100_exp(self, mock_output):
+    def test_level_up_100_exp_output(self, mock_output):
         character = {
             'level': 1,
             'experience': 100,

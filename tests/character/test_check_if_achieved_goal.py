@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from character import check_if_achieved_goal
 
@@ -12,4 +16,3 @@ class TestCheckIfAchievedGoal(TestCase):
         board = {(0, 0): 'empty', (0, 1): 'empty', (1, 0): 'empty', (1, 1): 'empty'}
         character = {'X-coordinate': 0, 'Y-coordinate': 1}
         self.assertEqual(False, check_if_achieved_goal(board, character))
-

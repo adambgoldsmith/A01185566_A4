@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from character import is_alive
 
