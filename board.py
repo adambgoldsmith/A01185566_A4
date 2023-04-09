@@ -1,6 +1,7 @@
 import random
 from character import *
 
+
 def create_board(columns: int, rows: int) -> dict:
     """
     Generate game board
@@ -28,6 +29,7 @@ def create_board(columns: int, rows: int) -> dict:
                 events.remove(event)
     return board
 
+
 def create_events_list(rows: int, columns: int) -> list:
     """
     Create list of events
@@ -42,8 +44,8 @@ def create_events_list(rows: int, columns: int) -> list:
     events = ['chest', 'chest', 'nymph', 'nymph', 'shop', 'shop']
     empty_events = ['empty' for _ in range(rows * columns - 8)]
     events += empty_events
-    random.shuffle(events)
     return events
+
 
 def display_region(region: list) -> None:
     """
@@ -52,9 +54,15 @@ def display_region(region: list) -> None:
     :param region: A list
     :precondition: region must be a list created by the get_region() function
     :postcondition: prints the region name to the screen
+
+    >>> region_test = ['region_name']
+    >>> display_region(region_test)
+    -------------------------
+    region_name
     """
     print(f"-------------------------")
     print(region[0])
+
 
 def display_board(rows: int, columns: int, character: dict) -> None:
     """
@@ -91,6 +99,7 @@ def display_board(rows: int, columns: int, character: dict) -> None:
                 print('[]', end=final_char)
         print()
 
+
 def describe_current_location(region: list) -> None:
     """
     Describe current location
@@ -102,6 +111,7 @@ def describe_current_location(region: list) -> None:
     random_description = random.choice(region[1:5])
     print(random_description)
     print()
+
 
 def get_user_choice(character: dict) -> str:
     """
@@ -123,6 +133,7 @@ def get_user_choice(character: dict) -> str:
             check_inventory(character)
         else:
             print(f"That is not a valid direction! Please try again.")
+
 
 def validate_move(board: dict, character: dict, direction: str) -> bool:
     """
@@ -161,7 +172,8 @@ def validate_move(board: dict, character: dict, direction: str) -> bool:
         return True
     else:
         return False
-    
+
+
 def move_character(character: dict, direction: str) -> None:
     """
     Move character
