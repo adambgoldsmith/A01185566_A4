@@ -1,6 +1,11 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from nymph import user_riddle_choice
 from unittest.mock import patch
+
 
 class TestUserRiddleChoice(TestCase):
     @patch('builtins.input', side_effect=['3'])

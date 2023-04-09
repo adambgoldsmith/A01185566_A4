@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from nymph import correct_answer
