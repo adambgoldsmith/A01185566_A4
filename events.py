@@ -1,8 +1,8 @@
-from battle import *
 from chest import *
 from shop import *
 from boss import *
 from nymph import *
+
 
 def all_events(board: dict, character: dict, region: list) -> None:
     """
@@ -10,7 +10,7 @@ def all_events(board: dict, character: dict, region: list) -> None:
 
     :param board: A dictionary
     :param character: A dictionary
-    :region: A list
+    :param region: A list
     :precondition: Board must be a dictionary created by the create_board() function
     :preconditon: Character must be a dictionary created by the create_character() function
     :precondition: Region must be a list created by the get_region() function
