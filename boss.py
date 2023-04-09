@@ -16,12 +16,7 @@ def boss_battle(character: dict, region: list) -> None:
     boss = generate_boss(region)
     boss_description(boss, region)
     print(f"{boss['name']} has {boss['health']} health and {boss['attack_power']} attack power.")
-    while boss['health'] > 0:
-        user_battle_choice(character, boss)
-        if boss['health'] > 0:
-            boss_attack(character, boss)
-            if not is_alive(character):
-                break
+    boss_battle_loop(character, boss)
     if boss['health'] <= 0:
         character['experience'] += 100
         character['health'] = character['max_health']
@@ -29,6 +24,24 @@ def boss_battle(character: dict, region: list) -> None:
               f"You feel invigorated by your victory."
               f" You gain 100 experience points for conquering such a formidable foe!\n"
               f"You continue on your journey...")
+
+
+def boss_battle_loop(character: dict, boss: dict) -> None:
+    """
+    Start battle loop
+
+    :param character: A dictionary
+    :param boss: A dictionary
+    :precondition: character must be a dictionary created by the create_character() function
+    :precondition: boss must be a dictionary created by the generate_boss() function
+    :postcondition: Start a new boss battle loop
+    """
+    while boss['health'] > 0:
+        user_battle_selection(character, boss)
+        if boss['health'] > 0:
+            boss_attack(character, boss)
+            if not is_alive(character):
+                break
 
 
 def boss_description(boss: dict, region: list) -> None:
@@ -90,7 +103,7 @@ def generate_boss(region: list) -> dict:
     }
     boss_three = {
         'type': 'boss',
-        'name': 'F̵͍̺̺͕̩͍̼̀ͥ̒O̹̞̹ͫ͒͝L̝̟͔̣̦͔̖̥͊̀ͥ̄͟G̩͇̣̱̮͍͑͞R͇̦̘͖̣̞͖ͪ̐̈́̏͞I̸̹̺̰̥̤̜̯̭̿̄ͩM̨͚͎̜̬ͤ̎̏͒, The Void Kraken',
+        'name': 'FOLGRIM, The Void Kraken',
         'health': 500,
         'attack_power': 35,
         'attack_desc': 'grapples its tentacles around your ship and squeezes tight',
