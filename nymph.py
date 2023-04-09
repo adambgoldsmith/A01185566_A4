@@ -1,5 +1,6 @@
 import random
 
+
 def nymph(character: dict) -> None:
     """
     Start nymph event
@@ -23,6 +24,7 @@ def nymph(character: dict) -> None:
     else:
         incorrect_answer(character)
 
+
 def generate_riddle() -> list:
     """
     Generate riddle
@@ -30,14 +32,45 @@ def generate_riddle() -> list:
     :return: A list of the generated riddle and its answers
     """
     riddles = {
-        1: ["What can you find at the end of a rainbow?", "1. Absolutely nothing!", "2. A leprechaun's gold", "3. The letter 'w'", "4. A 7th colour", '3'],
-        2: ["What is the 7th letter of the alphabet?", '1. H', '2. G', '2. ñ', '3. E', '1'],
-        3: ["What must be broken before it is used?", '1. The law', '2. A new pair of boots', '3. A jar of honey', '4. An egg', '4'],
-        4: ["What month of the year has 28 days?", '1. January', '2. February', '3. None of them!', '4. All of them!', '4'],
-        5: ["What is full of holes but still holds water?", '1. A bucket', '2. A sponge', '3. A piece of cheese', '4. A watering can', '2'],
-        6: ["I'm light as a feather, yet the strongest person can't hold me for five minutes. What am I?", '1. The moon', '2. Your breath', '3. A fly', '4. Smoke', '2'],
+        1: ["What can you find at the end of a rainbow?",
+            "1. Absolutely nothing!",
+            "2. A leprechaun's gold",
+            "3. The letter 'w'",
+            "4. A 7th colour",
+            '3'],
+        2: ["What is the 7th letter of the alphabet?",
+            '1. H',
+            '2. G',
+            '2. ñ',
+            '3. E',
+            '1'],
+        3: ["What must be broken before it is used?",
+            '1. The law',
+            '2. A new pair of boots',
+            '3. A jar of honey',
+            '4. An egg',
+            '4'],
+        4: ["What month of the year has 28 days?",
+            '1. January',
+            '2. February',
+            '3. None of them!',
+            '4. All of them!',
+            '4'],
+        5: ["What is full of holes but still holds water?",
+            '1. A bucket',
+            '2. A sponge',
+            '3. A piece of cheese',
+            '4. A watering can',
+            '2'],
+        6: ["I'm light as a feather, yet the strongest person can't hold me for five minutes. What am I?",
+            '1. The moon',
+            '2. Your breath',
+            '3. A fly',
+            '4. Smoke',
+            '2'],
     }
     return riddles[random.randint(1, 6)]
+
 
 def tell_riddle(riddle: list) -> None:
     """
@@ -46,9 +79,18 @@ def tell_riddle(riddle: list) -> None:
     :param riddle: A list
     :precondition: riddle must be a list created by the generate_riddle() function
     :postcondition: print the riddle
+
+    >>> test_riddle = ['riddle', 'answer one', 'red herring', 'red herring', 'answer', 'answer index']
+    >>> tell_riddle()
+    riddle
+    red herring
+    red herring
+    red herring
+    answer
     """
     for phrase in range(5):
         print(riddle[phrase])
+
 
 def user_riddle_choice(riddle: list) -> bool:
     """
@@ -64,7 +106,8 @@ def user_riddle_choice(riddle: list) -> bool:
         return True
     else:
         return False
-    
+
+
 def incorrect_answer(character: dict) -> None:
     """
     Fail riddle
@@ -81,6 +124,7 @@ def incorrect_answer(character: dict) -> None:
         character['inventory']['gold'] -= 25
         print("You check your pockets and notice 25 gold coins have been stolen.")
     print("You head back to your ship empty handed... And quite sticky...")
+
 
 def correct_answer(character: dict) -> None:
     """
