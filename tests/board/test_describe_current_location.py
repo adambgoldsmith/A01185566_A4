@@ -1,7 +1,12 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from board import describe_current_location
 from unittest.mock import patch
+
 
 class TestDescribeCurrentLocation(TestCase):
     @patch('random.choice', side_effect=["There is only fog... As far as the eye can see..."])

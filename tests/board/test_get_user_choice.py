@@ -1,7 +1,12 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import io
 from unittest import TestCase
 from board import get_user_choice
 from unittest.mock import patch
+
 
 class TestGetUserChoice(TestCase):
     @patch('builtins.input', side_effect=['north'])

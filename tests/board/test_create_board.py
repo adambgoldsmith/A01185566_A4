@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from board import create_board
 from unittest.mock import patch
