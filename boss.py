@@ -1,6 +1,7 @@
 from battle import *
 from character import *
 
+
 def boss_battle(character: dict, region: list) -> None:
     """
     Start boss battle
@@ -25,8 +26,10 @@ def boss_battle(character: dict, region: list) -> None:
         character['experience'] += 100
         character['health'] = character['max_health']
         print(f"{boss['name']} falls, plunging through the clouds. You have emerged victorious!\n"
-              f"You feel invigorated by your victory. You gain 100 experience points for conquering such a formidable foe!\n"
+              f"You feel invigorated by your victory."
+              f" You gain 100 experience points for conquering such a formidable foe!\n"
               f"You continue on your journey...")
+
 
 def boss_description(boss: dict, region: list) -> None:
     """
@@ -41,7 +44,8 @@ def boss_description(boss: dict, region: list) -> None:
     print(f"As you near the far reaches of {region[0]} you sense the presence of an immense darkness.\n"
           f"From beneath the clouds, {boss['name']}, swoops into view and blocks your path.\n"
           f"You prepare for a tough battle...")
-    
+
+
 def generate_boss(region: list) -> dict:
     """
     Generate boss
@@ -90,6 +94,7 @@ def generate_boss(region: list) -> dict:
     else:
         raise ValueError(f'Invalid region.')
 
+
 def boss_attack(character: dict, boss: dict) -> None:
     """
     Execute boss attack
@@ -101,14 +106,16 @@ def boss_attack(character: dict, boss: dict) -> None:
     :postcondition: execute a boss attack
     """
     attack_type = random.randint(1, 4)
-    if attack_type == 1 and boss['prepared'] == False:
+    if attack_type == 1 and boss["prepared"] is False:
         boss['prepared'] = True
         print(f"{boss['name']} gets ready to unleash a powerful attack!")
-    elif boss['prepared'] == True:
+    elif boss['prepared']:
         character['health'] -= boss['ability_power']
         print(f"{boss['name']} has unleashed a powerful attack!")
-        print(f"{boss['name']} {boss['ability_desc']}. It dealt {boss['ability_power']} damage! You have {character['health']} health remaining.")
+        print(f"{boss['name']} {boss['ability_desc']}. It dealt {boss['ability_power']} damage!"
+              f" You have {character['health']} health remaining.")
         boss['prepared'] = False
     else:
         character['health'] -= boss['attack_power']
-        print(f"{boss['name']} {boss['attack_desc']}. It dealt {boss['attack_power']} damage! You have {character['health']} health remaining.")
+        print(f"{boss['name']} {boss['attack_desc']}. It dealt {boss['attack_power']} damage!"
+              f" You have {character['health']} health remaining.")
