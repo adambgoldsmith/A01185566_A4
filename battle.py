@@ -1,6 +1,7 @@
 import random
 from character import *
 
+
 def battle(character: dict) -> None:
     """
     Start battle event
@@ -10,7 +11,8 @@ def battle(character: dict) -> None:
     :postcondition: Commence an enemy battle sequence
     """
     print(f"-------------------------")
-    print(f"You spot a hostile air ship on the horizon. As the ship gets closer, your eyes are drawn to the large skull\n"
+    print(f"You spot a hostile air ship on the horizon. As the ship gets closer,"
+          f" your eyes are drawn to the large skull\n"
           f"and crossbones crudely painted on it's side. Pirates! You ready your cannons for battle.")
     enemy_ship = generate_enemy_ship()
     print(f"The enemy ship has {enemy_ship['health']} health and {enemy_ship['attack_power']} attack power.")
@@ -25,23 +27,26 @@ def battle(character: dict) -> None:
     if enemy_ship['health'] <= 0:
         character['inventory']['gold'] += 50
         character['experience'] += 25
-        print(f"The hostile ship plummets through the clouds and explodes in a fiery ball of flames. Well done, captain! You stand victorious!\n"
+        print(f"The hostile ship plummets through the clouds and explodes in a fiery ball of flames."
+              f" Well done, captain! You stand victorious!\n"
               f"You gain 50 gold coins for your victory.\n"
               f"You gain 25 experience points for your victory.")
-    
+
+
 def generate_enemy_ship() -> dict:
     """
     Generate enemy ship
 
     :return: A dictionary representing an enemy ship
     """
-    enemy_ship = { # change with difficulty
+    enemy_ship = {
         'type': 'regular',
         'name': 'the pirate ship',
         'health': 50, 
         'attack_power': 10,
     }
     return enemy_ship
+
 
 def user_battle_choice(character: dict, enemy: dict) -> bool:
     """
@@ -88,6 +93,7 @@ def user_battle_choice(character: dict, enemy: dict) -> bool:
             print("I don't understand your order, captain! Please try again.")
     return False
 
+
 def fire_cannons(character: dict, enemy: dict) -> None:
     """
     Fire cannons
@@ -100,10 +106,12 @@ def fire_cannons(character: dict, enemy: dict) -> None:
     """
     if roll_critical_hit():
         enemy['health'] -= character['attack_power'] * 2
-        print(f"You fire your cannons at {enemy['name']}. It's a critical hit! They have {enemy['health']} health remaining.")
+        print(f"You fire your cannons at {enemy['name']}. It's a critical hit!"
+              f" They have {enemy['health']} health remaining.")
     else:
         enemy['health'] -= character['attack_power']
         print(f"You fire your cannons at {enemy['name']}. They have {enemy['health']} health remaining.")
+
 
 def repair_ship(character: dict) -> None:
     """
@@ -119,6 +127,7 @@ def repair_ship(character: dict) -> None:
         character['health'] += int((character['max_health'] / 2))
     print(f"You repair your ship and gain {int((character['max_health'] / 2))} health.")
 
+
 def air_barrage(character: dict, enemy: dict) -> None:
     """
     Use air barrage
@@ -131,11 +140,14 @@ def air_barrage(character: dict, enemy: dict) -> None:
     """
     if roll_critical_hit():
         enemy['health'] -= character['ability_power'] * 2
-        print(f"You fire your air barrage at {enemy['name']}. It's a critical hit! The damage was absolutely devastating!\n"
+        print(f"You fire your air barrage at {enemy['name']}."
+              f" It's a critical hit! The damage was absolutely devastating!\n"
               f"{enemy['name']} has {enemy['health']} health remaining.")
     else:
         enemy['health'] -= character['ability_power']
-        print(f"You fire your air barrage at {enemy['name']}. It deals massive damage! They have {enemy['health']} health remaining.")
+        print(f"You fire your air barrage at {enemy['name']}."
+              f" It deals massive damage! They have {enemy['health']} health remaining.")
+
 
 def retreat(character: dict, enemy: dict) -> None:
     """
@@ -152,8 +164,10 @@ def retreat(character: dict, enemy: dict) -> None:
         print(f"You cannot retreat from a boss battle, captain!")
     else:
         character['health'] -= enemy['attack_power']
-        print(f"You retreat from the battle. The enemy fires several shots as you flee. You lose {enemy['attack_power']} health.\n"
+        print(f"You retreat from the battle. The enemy fires several shots as you flee."
+              f" You lose {enemy['attack_power']} health.\n"
               f"You have {character['health']} health remaining.")
+
 
 def roll_critical_hit() -> bool:
     """
@@ -161,11 +175,12 @@ def roll_critical_hit() -> bool:
 
     :return: A boolean representing whether the roll was a critical hit or not
     """
-    if random.randint(2, 10) <= 2: #######################
+    if random.randint(2, 10) <= 2:
         return True
     else:
         return False
-    
+
+
 def enemy_attack(character: dict, enemy: dict) -> None:
     """
     Execute enemy attack
@@ -177,5 +192,5 @@ def enemy_attack(character: dict, enemy: dict) -> None:
     :postcondition: Execute an enemy attack
     """
     character['health'] -= enemy['attack_power']
-    print(f'The enemy ship fires its cannons at you. You lose {enemy["attack_power"]} health. You have {character["health"]} health remaining.')
-    
+    print(f'The enemy ship fires its cannons at you. You lose {enemy["attack_power"]} health.'
+          f' You have {character["health"]} health remaining.')
