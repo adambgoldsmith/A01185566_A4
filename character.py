@@ -1,3 +1,9 @@
+"""
+Adam Goldsmith
+A01185566
+"""
+
+
 def create_character() -> dict:
     """
     Create character

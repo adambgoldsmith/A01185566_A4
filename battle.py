@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 import random
 from character import *
 

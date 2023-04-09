@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from battle import *
 from character import *
 

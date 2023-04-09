@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from events import *
 from lore import *
 from board import *

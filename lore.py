@@ -1,3 +1,9 @@
+"""
+Adam Goldsmith
+A01185566
+"""
+
+
 def print_intro_lore() -> None:
     """
     Print intro lore

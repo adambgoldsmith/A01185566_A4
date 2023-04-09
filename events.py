@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from chest import *
 from shop import *
 from boss import *
