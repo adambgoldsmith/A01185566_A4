@@ -38,6 +38,9 @@ def generate_enemy_ship() -> dict:
     Generate enemy ship
 
     :return: A dictionary representing an enemy ship
+
+    >>> generate_enemy_ship()
+    {'type': 'regular', 'name': 'the pirate ship', 'health': 50, 'attack_power': 10}
     """
     enemy_ship = {
         'type': 'regular',
@@ -55,7 +58,7 @@ def user_battle_choice(character: dict, enemy: dict) -> bool:
     :param character: A dictionary
     :param enemy: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
-    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Get user battle choice
     :return: A boolean representing whether the user retreated or not
     """
@@ -101,7 +104,7 @@ def fire_cannons(character: dict, enemy: dict) -> None:
     :param character: A dictionary
     :param enemy: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
-    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Fire cannons at enemy ship
     """
     if roll_critical_hit():
@@ -120,6 +123,10 @@ def repair_ship(character: dict) -> None:
     :param character: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Repair ship by half of max health
+
+    >>> character_test = {'max_health': 100, 'health': 50}
+    >>> repair_ship(character_test)
+    You repair your ship and gain 50 health.
     """
     if character['health'] + (character['max_health'] / 2) > character['max_health']:
         character['health'] = character['max_health']
@@ -135,7 +142,7 @@ def air_barrage(character: dict, enemy: dict) -> None:
     :param character: A dictionary
     :param enemy: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
-    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Use air barrage ability
     """
     if roll_critical_hit():
@@ -157,8 +164,18 @@ def retreat(character: dict, enemy: dict) -> None:
     :param enemy: A dictionary
 
     :precondition: character must be a dictionary created by the create_character() function
-    :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
+    :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Retreat from battle and lose health
+
+    >>> character_test = {'health': 100}
+    >>> enemy_test = {'type': 'boss', 'attack_power': 10}
+    >>> retreat(character_test, enemy_test)
+    You cannot retreat from a boss battle, captain!
+    >>> character_test = {'health': 100}
+    >>> enemy_test = {'type': 'regular', 'attack_power': 10}
+    >>> retreat(character_test, enemy_test)
+    You retreat from the battle. The enemy fires several shots as you flee. You lose 10 health.
+    You have 90 health remaining.
     """
     if enemy['type'] == 'boss':
         print(f"You cannot retreat from a boss battle, captain!")
@@ -190,6 +207,13 @@ def enemy_attack(character: dict, enemy: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
     :postcondition: Execute an enemy attack
+
+    >>> character_test = {'health': 100}
+    >>> enemy_test = {'attack_power': 20}
+    >>> enemy_attack(character_test, enemy_test)
+    The enemy ship fires its cannons at you. You lose 20 health. You have 80 health remaining.
+    >>> character_test
+    {'health': 80}
     """
     character['health'] -= enemy['attack_power']
     print(f'The enemy ship fires its cannons at you. You lose {enemy["attack_power"]} health.'
