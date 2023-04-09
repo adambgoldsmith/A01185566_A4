@@ -137,8 +137,8 @@ def boss_attack(character: dict, boss: dict) -> None:
         print(f"{boss['name']} gets ready to unleash a powerful attack!")
     elif boss['prepared']:
         character['health'] -= boss['ability_power']
-        print(f"{boss['name']} has unleashed a powerful attack!")
-        print(f"{boss['name']} {boss['ability_desc']}. It dealt {boss['ability_power']} damage!"
+        print(f"{boss['name']} has unleashed a powerful attack!\n"
+              f"{boss['name']} {boss['ability_desc']}. It dealt {boss['ability_power']} damage!"
               f" You have {character['health']} health remaining.")
         boss['prepared'] = False
     else:
