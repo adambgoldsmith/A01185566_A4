@@ -13,6 +13,8 @@ def chest(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Commence the chest event
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     print(f"-------------------------")
     print(f"Out of the corner of your eye you spot a shimmering chest on a tiny floating island.\n"
           f"You approach the chest and notice several gemstones of differing shapes above the heavy iron latch.")
