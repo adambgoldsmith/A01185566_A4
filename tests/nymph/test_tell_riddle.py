@@ -24,3 +24,7 @@ class TestTellRiddle(TestCase):
                           "3. The letter 'w'\n" \
                           "4. A 7th colour\n"
         self.assertEqual(expected_output, tell_riddle_output)
+
+    def test_tell_riddle_type_error(self):
+        with self.assertRaises(TypeError):
+            tell_riddle(None)

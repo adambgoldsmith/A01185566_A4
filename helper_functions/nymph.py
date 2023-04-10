@@ -18,7 +18,7 @@ def nymph(character: dict) -> None:
     print()
     print(f"-------------------------\n"
           f"You notice a small sky-island as you drift through the air.\n"
-          f"You dock your ship and cross over to the island\n"
+          f"You dock your ship and cross over to the island.\n"
           f"A small cloud nymph is standing beneath some trees, dancing and singing.\n"
           f"The nymph approaches playfully and chants to you:\n"
           f"\"Solve my riddle and rewarded thee shall be! Falter in riposte and a trick you will see!\"\n")

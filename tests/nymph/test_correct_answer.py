@@ -28,3 +28,7 @@ class TestCorrectAnswer(TestCase):
         }}
         correct_answer(character)
         self.assertEqual(60, character['inventory']['gold'])
+
+    def test_correct_answer_type_error(self):
+        with self.assertRaises(TypeError):
+            correct_answer(None)

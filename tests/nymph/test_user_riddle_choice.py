@@ -25,3 +25,7 @@ class TestUserRiddleChoice(TestCase):
         riddle = ["What can you find at the end of a rainbow?", "1. Absolutely nothing!", "2. A leprechaun's gold",
                   "3. The letter 'w'", "4. A 7th colour", '3']
         self.assertEqual(False, user_riddle_choice(riddle))
+
+    def test_user_riddle_choice_type_error(self):
+        with self.assertRaises(TypeError):
+            user_riddle_choice(None)
