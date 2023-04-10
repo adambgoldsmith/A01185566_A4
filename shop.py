@@ -13,6 +13,8 @@ def shop(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Commence the shop event
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     print(f"-------------------------")
     print(f"You notice a small trade ship gliding through the air. "
           f"The large wooden propeller on its roof clicks loudly with each rotation.\n"
@@ -29,6 +31,8 @@ def user_shop_choice(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Get user shop choice
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     while True:
         user_choice = input(f"\"Hello friend! Interested in my wares?\"\n"
                             f"1. Buy 2 flux (10 gold)\n"
@@ -62,6 +66,10 @@ def sufficient_gold(user_input: str, character: dict) -> None:
     You don't have enough gold, friend.
     <BLANKLINE>
     """
+    if type(user_input) is not str:
+        raise TypeError("User_input must be a string")
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     if user_input == '1':
         if character['inventory']['gold'] >= 10:
             buy_flux(character)
@@ -89,6 +97,8 @@ def buy_flux(character: dict) -> None:
     >>> character_test
     {'inventory': {'gold': 0, 'flux': 2}}
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     character['inventory']['flux'] += 2
     character['inventory']['gold'] -= 10
     print(f"You bought 2 flux for 10 gold.\n")
@@ -109,6 +119,8 @@ def buy_repair_kit(character: dict) -> None:
     >>> character_test
     {'inventory': {'gold': 0, 'repair_kits': 1}}
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     character['inventory']['repair_kits'] += 1
     character['inventory']['gold'] -= 30
     print(f"You bought a repair kit for 30 gold.\n")
