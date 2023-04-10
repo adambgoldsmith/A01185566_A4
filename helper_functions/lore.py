@@ -42,7 +42,7 @@ def get_region(region_number: int) -> list:
     :return: list of region information
     """
     if type(region_number) is not int:
-        raise TypeError("Region_number must be an integer")
+        raise TypeError("Arguments must be correct data types")
     regions = {
         0: [f"The Cloud Expanse", 
             f"The several thousand clouds here mesmerize you", 

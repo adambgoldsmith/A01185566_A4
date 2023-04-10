@@ -17,6 +17,8 @@ def create_board(columns: int, rows: int) -> dict:
     :postcondition: creates a dictionary of board coordinates with a random room assigned to each space.
     :return: the game board as a dictionary.
     """
+    if type(rows) is not int or type(columns) is not int:
+        raise TypeError("Arguments must be correct data types")
     events = create_events_list(rows, columns)
     board = {}
     if rows < 5 or columns < 5:
@@ -45,10 +47,8 @@ def create_events_list(rows: int, columns: int) -> list:
     :postcondition: creates a list of events
     :return: a list of events
     """
-    if type(rows) is not int:
-        raise TypeError("Rows must be an integer")
-    if type(columns) is not int:
-        raise TypeError("columns must be an integer")
+    if type(rows) is not int or type(columns) is not int:
+        raise TypeError("Arguments must be correct data types")
     events = ['chest', 'chest', 'nymph', 'nymph', 'shop', 'shop']
     empty_events = ['empty' for _ in range(rows * columns - 8)]
     events += empty_events
@@ -68,8 +68,8 @@ def display_region(region: list) -> None:
     -------------------------
     region_name
     """
-    if type(region) is not list and len(region) < 5:
-        raise TypeError("Region must be a list with correct items")
+    if type(region) is not list:
+        raise TypeError("Arguments must be correct data types")
     print(f"-------------------------")
     print(region[0])
 
@@ -95,12 +95,8 @@ def display_board(rows: int, columns: int, character: dict) -> None:
     [] o/
     [] []
     """
-    if type(rows) is not int:
-        raise TypeError("Rows must be an integer")
-    if type(columns) is not int:
-        raise TypeError("columns must be an integer")
-    if type(character) is not dict and len(character) < 10:
-        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(rows) is not int or type(columns) is not int or type(character) is not dict:
+        raise TypeError("Arguments must be correct data types")
     character_location = (character['X-coordinate'], character['Y-coordinate'])
     for row in range(rows):
         for column in range(columns):
@@ -123,8 +119,8 @@ def describe_current_location(region: list) -> None:
     :precondition: region must be a list created by the get_region() function
     :postcondition: prints a description of the current location to the screen
     """
-    if type(region) is not list and len(region) < 5:
-        raise TypeError("Region must be a list with correct items")
+    if type(region) is not list:
+        raise TypeError("Arguments must be correct data types")
     random_description = random.choice(region[1:5])
     print(random_description)
     print()
@@ -139,8 +135,8 @@ def get_user_choice(character: dict) -> str:
     :postcondition: get the user's desired direction
     :return: the user's desired direction as a string
     """
-    if type(character) is not dict and len(character) < 10:
-        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(character) is not dict:
+        raise TypeError("Arguments must be correct data types")
     options = ['1', '2', '3', '4', 'north', 'south', 'east', 'west']
     while True:
         print(f"Which direction will you travel?\n"
@@ -166,7 +162,6 @@ def validate_move(board: dict, character: dict, direction: str) -> bool:
     :precondition: direction must be a string: '1', 'north', '2', 'south', '3', 'east', '4', 'west'
     :postcondition: verify if the chosen direction is within the bounds of the board
     :return: the validity of the movement as a boolean
-
     >>> board_test = {(0, 0): 'room', (0, 1): 'room', (1, 0): 'room', (1, 1): 'room'}
     >>> character_test = {'X-coordinate': 0, 'Y-coordinate': 0}
     >>> direction_test = 'south'
@@ -178,12 +173,8 @@ def validate_move(board: dict, character: dict, direction: str) -> bool:
     >>> validate_move(board_test, character_test, direction_test)
     False
     """
-    if type(board) is not dict:
-        raise TypeError("Board must be a dictionary")
-    if type(character) is not dict and len(character) < 10:
-        raise TypeError("Character must be a dictionary with correct key/value pairs")
-    if type(direction) is not str:
-        raise TypeError("Direction must be a string")
+    if type(board) is not dict or type(character) is not dict or type(direction) is not str:
+        raise TypeError("Arguments must be correct data types")
     new_location = [character['X-coordinate'], character['Y-coordinate']]
     if direction == '1' or direction == 'north':
         new_location[1] -= 1
@@ -219,10 +210,8 @@ def move_character(character: dict, direction: str) -> None:
     >>> character_test
     {'X-coordinate': 1, 'Y-coordinate': 0}
     """
-    if type(character) is not dict and len(character) < 10:
-        raise TypeError("Character must be a dictionary with correct key/value pairs")
-    if type(direction) is not str:
-        raise TypeError("Direction must be a string")
+    if type(character) is not dict or type(direction) is not str:
+        raise TypeError("Arguments must be correct data types")
     if direction == '1' or direction == 'north':
         character['Y-coordinate'] -= 1
     elif direction == '2' or direction == 'south':
