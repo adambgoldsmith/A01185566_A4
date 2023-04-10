@@ -13,6 +13,8 @@ def nymph(character: dict) -> None:
     :preconditon: Character must be a dictionary created by the create_character() function
     :postcondition: Commence the nymph event
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     print()
     print(f"-------------------------\n"
           f"You notice a small sky-island as you drift through the air.\n"
@@ -92,6 +94,8 @@ def tell_riddle(riddle: list) -> None:
     red herring
     answer
     """
+    if type(riddle) is not list:
+        raise TypeError("riddle must be a list")
     for phrase in range(5):
         print(riddle[phrase])
 
@@ -105,6 +109,8 @@ def user_riddle_choice(riddle: list) -> bool:
     :postcondition: Get the users riddle choice and check if it is correct
     :return: A boolean value representing if the user got the riddle correct
     """
+    if type(riddle) is not list:
+        raise TypeError("Riddle must be a list")
     user_choice = input()
     if user_choice == riddle[5]:
         return True
@@ -120,6 +126,8 @@ def incorrect_answer(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: print dialogue and remove 25 gold from character inventory
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     print(f"\"No no no!\" the nypmph groans.\n"
           f"The nymph snaps it's fingers and a fresh fritzberry pie appears in their hand out of thin air.\n"
           f"In a split second, the nymph splats the fritzberry pie directly into your face!\n"
@@ -138,6 +146,8 @@ def correct_answer(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: print dialogue and give the character 50 gold
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
     character['inventory']['gold'] += 50
     print(f"\"CORRECT!\" the nymph giggles.\n"
           f"\"A promise is a promise!\"\n"
