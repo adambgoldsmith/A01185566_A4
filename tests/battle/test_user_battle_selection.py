@@ -33,3 +33,7 @@ class TestUserBattleSelection(TestCase):
             'attack_power': 10,
         }
         self.assertEqual(False, user_battle_selection(character, enemy))
+
+    def test_user_battle_selection_type_error(self):
+        with self.assertRaises(TypeError):
+            user_battle_selection(None, None)

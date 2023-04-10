@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 
 class TestAirBarrage(TestCase):
-    @patch('battle.roll_critical_hit', side_effect=[False])
+    @patch('helper_functions.battle.roll_critical_hit', side_effect=[False])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_air_barrage_regular_output(self, mock_output, _):
         character = {'ability_power': 20}
@@ -20,7 +20,7 @@ class TestAirBarrage(TestCase):
                           "They have 80 health remaining.\n"
         self.assertEqual(expected_output, air_barrage_output)
 
-    @patch('battle.roll_critical_hit', side_effect=[True])
+    @patch('helper_functions.battle.roll_critical_hit', side_effect=[True])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_air_barrage_critical_hit_output(self, mock_output, _):
         character = {'ability_power': 20}
@@ -32,16 +32,20 @@ class TestAirBarrage(TestCase):
                           "the pirate ship has 60 health remaining.\n"
         self.assertEqual(expected_output, air_barrage_output)
 
-    @patch('battle.roll_critical_hit', side_effect=[False])
+    @patch('helper_functions.battle.roll_critical_hit', side_effect=[False])
     def test_air_barrage_regular_damage(self, _):
         character = {'ability_power': 20}
         enemy = {'name': 'the pirate ship', 'health': 100}
         air_barrage(character, enemy)
         self.assertEqual(80, enemy['health'])
 
-    @patch('battle.roll_critical_hit', side_effect=[True])
+    @patch('helper_functions.battle.roll_critical_hit', side_effect=[True])
     def test_air_barrage_critical_hit_damage(self, _):
         character = {'ability_power': 20}
         enemy = {'name': 'the pirate ship', 'health': 100}
         air_barrage(character, enemy)
         self.assertEqual(60, enemy['health'])
+
+    def test_air_barrage_type_error(self):
+        with self.assertRaises(TypeError):
+            air_barrage(None, None)

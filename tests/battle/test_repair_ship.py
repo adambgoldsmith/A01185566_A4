@@ -26,3 +26,7 @@ class TestRepairShip(TestCase):
         character = {'health': 100, 'max_health': 100}
         repair_ship(character)
         self.assertEqual(100, character['health'])
+
+    def test_repair_ship_type_error(self):
+        with self.assertRaises(TypeError):
+            repair_ship(None)

@@ -34,3 +34,7 @@ class TestRetreat(TestCase):
         enemy = {'type': 'regular', 'attack_power': 10}
         retreat(character, enemy)
         self.assertEqual(90, character['health'])
+
+    def test_retreat_type_error(self):
+        with self.assertRaises(TypeError):
+            retreat(None, None)

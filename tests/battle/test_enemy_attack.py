@@ -23,3 +23,7 @@ class TestEnemyAttack(TestCase):
         enemy = {'attack_power': 10}
         enemy_attack(character, enemy)
         self.assertEqual(90, character['health'])
+
+    def test_enemy_attack_type_error(self):
+        with self.assertRaises(TypeError):
+            enemy_attack(None, None)
