@@ -22,10 +22,10 @@ def all_events(board: dict, character: dict, region: list) -> None:
     """
     if type(board) is not dict:
         raise TypeError("Board must be a dictionary")
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
-    if type(region) is not list:
-        raise TypeError("Region must be a list")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(region) is not list and len(region) < 5:
+        raise TypeError("Region must be a list with correct items")
     events = {
         'chest': chest,
         'nymph': nymph,
@@ -45,5 +45,5 @@ def all_events(board: dict, character: dict, region: list) -> None:
         if random.randint(1, 4) == 1:
             events['enemy'](character)
     else:
-        raise ValueError(f"Board tile does not exist.")
+        raise ValueError("Board tile does not exist.")
     
