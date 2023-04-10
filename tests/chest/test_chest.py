@@ -9,8 +9,8 @@ from unittest.mock import patch
 
 
 class TestChest(TestCase):
-    @patch('chest.generate_puzzle', side_effect=['I'])
-    @patch('chest.user_puzzle_choice', side_effect=['I'])
+    @patch('helper_functions.chest.generate_puzzle', side_effect=['I'])
+    @patch('helper_functions.chest.user_puzzle_choice', side_effect=['I'])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_chest_correct_output(self, mock_output, _, __):
         character = {'inventory': {
@@ -26,8 +26,8 @@ class TestChest(TestCase):
                           " You collect your spoils and head back to your ship.\n"
         self.assertEqual(expected_output, chest_output)
 
-    @patch('chest.generate_puzzle', side_effect=['I'])
-    @patch('chest.user_puzzle_choice', side_effect=['O'])
+    @patch('helper_functions.chest.generate_puzzle', side_effect=['I'])
+    @patch('helper_functions.chest.user_puzzle_choice', side_effect=['O'])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_chest_incorrect_output(self, mock_output, _, __):
         character = {'inventory': {
@@ -43,8 +43,8 @@ class TestChest(TestCase):
                           " colours. You head back to your ship empty handed...\n"
         self.assertEqual(expected_output, chest_output)
 
-    @patch('chest.generate_puzzle', side_effect=['I'])
-    @patch('chest.user_puzzle_choice', side_effect=['I'])
+    @patch('helper_functions.chest.generate_puzzle', side_effect=['I'])
+    @patch('helper_functions.chest.user_puzzle_choice', side_effect=['I'])
     def test_chest_correct_answer(self, _, __):
         character = {'inventory': {
             'gold': 0
@@ -52,11 +52,15 @@ class TestChest(TestCase):
         chest(character)
         self.assertEqual(50, character['inventory']['gold'])
 
-    @patch('chest.generate_puzzle', side_effect=['V'])
-    @patch('chest.user_puzzle_choice', side_effect=['X'])
+    @patch('helper_functions.chest.generate_puzzle', side_effect=['V'])
+    @patch('helper_functions.chest.user_puzzle_choice', side_effect=['X'])
     def test_chest_incorrect_answer(self, _, __):
         character = {'inventory': {
             'gold': 0
         }}
         chest(character)
         self.assertEqual(0, character['inventory']['gold'])
+
+    def test_chest_type_error(self):
+        with self.assertRaises(TypeError):
+            chest(None)

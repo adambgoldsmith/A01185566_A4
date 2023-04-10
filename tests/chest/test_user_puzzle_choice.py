@@ -31,3 +31,7 @@ class TestUserPuzzleChoice(TestCase):
     @patch('builtins.input', side_effect=['test'])
     def test_user_puzzle_choice_not_a_number(self, _):
         self.assertEqual('incorrect', user_puzzle_choice())
+
+    def test_user_puzzle_choice_type_error(self):
+        with self.assertRaises(TypeError):
+            user_puzzle_choice(None)
