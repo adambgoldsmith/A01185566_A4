@@ -52,3 +52,7 @@ class TestSufficientGold(TestCase):
         sufficient_gold_output = mock_output.getvalue()
         expected_output = "You don't have enough gold, friend.\n\n"
         self.assertEqual(expected_output, sufficient_gold_output)
+
+    def test_sufficient_gold_type_error(self):
+        with self.assertRaises(TypeError):
+            sufficient_gold(None)

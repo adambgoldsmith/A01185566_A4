@@ -35,3 +35,7 @@ class TestBuyRepairKit(TestCase):
         }}
         buy_repair_kit(character)
         self.assertEqual(1, character['inventory']['repair_kits'])
+
+    def test_buy_repair_kit_type_error(self):
+        with self.assertRaises(TypeError):
+            buy_repair_kit(None)

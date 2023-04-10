@@ -25,20 +25,24 @@ class TestUserShopChoice(TestCase):
         self.assertEqual(expected_output, user_shop_choice_output)
 
     @patch('builtins.input', side_effect=['1', '3'])
-    @patch('shop.sufficient_gold', side_effect=[None])
+    @patch('helper_functions.shop.sufficient_gold', side_effect=[None])
     def test_user_shop_choice_flux_leave(self, _, __):
         character = {'inventory': {'gold': 100}}
         self.assertEqual(None, user_shop_choice(character))
 
     @patch('builtins.input', side_effect=['2', '3'])
-    @patch('shop.sufficient_gold', side_effect=[None])
+    @patch('helper_functions.shop.sufficient_gold', side_effect=[None])
     def test_user_shop_choice_repair_kit_leave(self, _, __):
         character = {'inventory': {'gold': 100}}
         self.assertEqual(None, user_shop_choice(character))
 
     @patch('builtins.input', side_effect=['0', '3'])
-    @patch('shop.check_inventory', side_effect=[None])
-    @patch('shop.sufficient_gold', side_effect=[None])
+    @patch('helper_functions.shop.check_inventory', side_effect=[None])
+    @patch('helper_functions.shop.sufficient_gold', side_effect=[None])
     def test_user_shop_choice_inventory_leave(self, _, __, ___):
         character = {'inventory': {'gold': 100}}
         self.assertEqual(None, user_shop_choice(character))
+
+    def test_user_shop_choice_type_error(self):
+        with self.assertRaises(TypeError):
+            user_shop_choice(None)

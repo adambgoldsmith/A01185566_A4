@@ -35,3 +35,7 @@ class TestBuyFlux(TestCase):
         }}
         buy_flux(character)
         self.assertEqual(2, character['inventory']['flux'])
+
+    def test_buy_flux_type_error(self):
+        with self.assertRaises(TypeError):
+            buy_flux(None)

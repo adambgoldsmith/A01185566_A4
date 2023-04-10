@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 
 class TestShop(TestCase):
-    @patch('shop.user_shop_choice', side_effect=[None])
+    @patch('helper_functions.shop.user_shop_choice', side_effect=[None])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_shop(self, mock_output, _):
         character = {'inventory': {
@@ -25,3 +25,7 @@ class TestShop(TestCase):
                           "You float up next to the ship, dock, and climb aboard.\n" \
                           "A grubby, short, hobgoblin shop keeper welcomes you in...\n"
         self.assertEqual(expected_output, shop_output)
+
+    def test_user_shop_type_error(self):
+        with self.assertRaises(TypeError):
+            shop(None)
