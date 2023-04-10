@@ -24,7 +24,7 @@ def create_character() -> dict:
                 'flux': 10,
                 'repair_kits': 1,
                 'gold': 0,
-        },
+        }
     }
     return character
 
@@ -37,7 +37,6 @@ def is_alive(character: dict) -> bool:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: verify if character is alive
     :return: verification if character is alive as a boolean
-
     >>> character_test = {'health': 50}
     >>> is_alive(character_test)
     True
@@ -45,8 +44,8 @@ def is_alive(character: dict) -> bool:
     >>> is_alive(character_test)
     False
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     if character['health'] > 0:
         return True
     else:
@@ -61,8 +60,8 @@ def check_inventory(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: display character's inventory
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     print(f"Flux: {character['inventory']['flux']}\n"
           f"Repair Kits: {character['inventory']['repair_kits']}\n"
           f"Gold: {character['inventory']['gold']}\n")
@@ -76,8 +75,8 @@ def level_up(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: level up character
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     if character['experience'] >= 100:
         character['level'] += 1
         experience_storage = character['experience'] - 100
@@ -99,14 +98,13 @@ def display_stats(character: dict) -> None:
     :param character: a dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: display character's stats
-
     >>> character_test = {'health': 100, 'max_health': 100, 'experience': 50, 'level': 1}
     >>> display_stats(character_test)
     HP: 100/100 |~| XP: 50/100 |~| Lvl: 1
     <BLANKLINE>
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     print(f"HP: {character['health']}/{character['max_health']} |~|"
           f" XP: {character['experience']}/100 |~|"
           f" Lvl: {character['level']}\n")
@@ -122,7 +120,6 @@ def check_if_achieved_goal(board: dict, character: dict) -> bool:
     :precondition: character must be a dictionary created by the make_character() function
     :postcondition: verify if player has reached the goal
     :return: verification if player has reached the goal as a boolean
-
     >>> board_test = {(0, 0): 'empty', (0, 1): 'empty', (1, 0): 'empty', (1, 1): 'empty'}
     >>> character_test = {'X-coordinate': 0, 'Y-coordinate': 0}
     >>> check_if_achieved_goal(board_test, character_test)
@@ -134,8 +131,8 @@ def check_if_achieved_goal(board: dict, character: dict) -> bool:
     """
     if type(board) is not dict:
         raise TypeError("Board must be a dictionary")
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     character_location = (character['X-coordinate'], character['Y-coordinate'])
     if character_location == list(board.keys())[-1]:
         character['X-coordinate'] = 0
