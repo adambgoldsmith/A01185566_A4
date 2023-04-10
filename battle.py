@@ -14,6 +14,8 @@ def battle(character: dict) -> None:
     :precondition: Character must be a dictionary created by the create_character() function
     :postcondition: Commence an enemy battle sequence
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     print(f"-------------------------")
     print(f"You spot a hostile air ship on the horizon. As the ship gets closer,"
           f" your eyes are drawn to the large skull\n"
@@ -40,6 +42,10 @@ def battle_loop(character: dict, enemy: dict) -> None:
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
     :postcondition: Start a new battle loop
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     while enemy['health'] > 0:
         retreated = user_battle_selection(character, enemy)
         if retreated:
@@ -55,7 +61,6 @@ def generate_enemy_ship() -> dict:
     Generate enemy ship
 
     :return: A dictionary representing an enemy ship
-
     >>> generate_enemy_ship()
     {'type': 'regular', 'name': 'the pirate ship', 'health': 50, 'attack_power': 10}
     """
@@ -77,6 +82,8 @@ def get_user_battle_choice(enemy: dict) -> str:
     :postcondition: Get the users battle choice
     :return: The users choice as a string
     """
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     while True:
         user_choice = input(f'What is your next move, captain?\n'
                             f'1. Fire cannons\n'
@@ -98,6 +105,8 @@ def attempt_repair_kit(character: dict) -> None:
     :precondition: Character must be a dictionary created by the create_character() function
     :postcondition: Attempt to repair the characters ship
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     if character['inventory']['repair_kits'] > 0:
         character['inventory']['repair_kits'] -= 1
         repair_ship(character)
@@ -115,6 +124,10 @@ def attempt_air_barrage(character: dict, enemy: dict) -> None:
     :precondition: Enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Attempt an air barrage attack
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     if character['inventory']['flux'] >= 2:
         character['inventory']['flux'] -= 2
         air_barrage(character, enemy)
@@ -133,6 +146,10 @@ def attempt_retreat(character: dict, enemy: dict) -> bool:
     :postcondition: Attempt to retreat from battle
     :return: Success or failed retreat attempt as a boolean
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     retreat(character, enemy)
     if enemy['type'] == 'regular':
         return True
@@ -151,6 +168,10 @@ def user_battle_selection(character, enemy):
     :postcondition: Execute the users battle choice
     :return: A boolean representing whether the user retreated or not
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     while True:
         choice = get_user_battle_choice(enemy)
         if choice == '0':
@@ -178,6 +199,10 @@ def fire_cannons(character: dict, enemy: dict) -> None:
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Fire cannons at enemy ship
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     if roll_critical_hit():
         enemy['health'] -= character['attack_power'] * 2
         print(f"You fire your cannons at {enemy['name']}. It's a critical hit!"
@@ -194,11 +219,12 @@ def repair_ship(character: dict) -> None:
     :param character: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Repair ship by half of max health
-
     >>> character_test = {'max_health': 100, 'health': 50}
     >>> repair_ship(character_test)
     You repair your ship and gain 50 health.
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     if character['health'] + (character['max_health'] / 2) > character['max_health']:
         character['health'] = character['max_health']
     else:
@@ -216,6 +242,10 @@ def air_barrage(character: dict, enemy: dict) -> None:
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Use air barrage ability
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     if roll_critical_hit():
         enemy['health'] -= character['ability_power'] * 2
         print(f"You fire your air barrage at {enemy['name']}."
@@ -237,7 +267,6 @@ def retreat(character: dict, enemy: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() or generate_boss() functions
     :postcondition: Retreat from battle and lose health
-
     >>> character_test = {'health': 100}
     >>> enemy_test = {'type': 'boss', 'attack_power': 10}
     >>> retreat(character_test, enemy_test)
@@ -248,6 +277,10 @@ def retreat(character: dict, enemy: dict) -> None:
     You retreat from the battle. The enemy fires several shots as you flee. You lose 10 health.
     You have 90 health remaining.
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     if enemy['type'] == 'boss':
         print(f"You cannot retreat from a boss battle, captain!")
     else:
@@ -278,7 +311,6 @@ def enemy_attack(character: dict, enemy: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :precondition: enemy must be a dictionary created by the generate_enemy_ship() function
     :postcondition: Execute an enemy attack
-
     >>> character_test = {'health': 100}
     >>> enemy_test = {'attack_power': 20}
     >>> enemy_attack(character_test, enemy_test)
@@ -286,6 +318,10 @@ def enemy_attack(character: dict, enemy: dict) -> None:
     >>> character_test
     {'health': 80}
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(enemy) is not dict and len(enemy) < 4:
+        raise TypeError("Enemy must be a dictionary with correct key/value pairs")
     character['health'] -= enemy['attack_power']
     print(f'The enemy ship fires its cannons at you. You lose {enemy["attack_power"]} health.'
           f' You have {character["health"]} health remaining.')
