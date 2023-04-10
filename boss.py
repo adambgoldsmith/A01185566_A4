@@ -16,6 +16,10 @@ def boss_battle(character: dict, region: list) -> None:
     :precondition: region must be a list created by the get_region() function
     :postcondition: Commence a boss battle sequence
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
+    if type(region) is not list:
+        raise TypeError("Character must be a dictionary")
     print('-------------------------')
     boss = generate_boss(region)
     boss_description(boss, region)
@@ -40,6 +44,10 @@ def boss_battle_loop(character: dict, boss: dict) -> None:
     :precondition: boss must be a dictionary created by the generate_boss() function
     :postcondition: Start a new boss battle loop
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
+    if type(boss) is not dict:
+        raise TypeError("Boss must be a dictionary")
     while boss['health'] > 0:
         user_battle_selection(character, boss)
         if boss['health'] > 0:
@@ -71,6 +79,10 @@ def boss_description(boss: dict, region: list) -> None:
     From beneath the clouds, Odeza, The Venom Wyvern, swoops into view and blocks your path.
     You prepare for a tough battle...
     """
+    if type(boss) is not dict:
+        raise TypeError("Boss must be a dictionary")
+    if type(region) is not list:
+        raise TypeError("region must be a dictionary")
     print(f"As you near the far reaches of {region[0]} you sense the presence of an immense darkness.\n"
           f"From beneath the clouds, {boss['name']}, swoops into view and blocks your path.\n"
           f"You prepare for a tough battle...")
@@ -85,6 +97,8 @@ def generate_boss(region: list) -> dict:
     :postcondition: generate a boss based on the region
     :return: A dictionary representing a boss
     """
+    if type(region) is not list:
+        raise TypeError("Region must be a dictionary")
     boss_one = {
         'type': 'boss',
         'name': 'Odeza, The Venom Wyvern',
@@ -135,6 +149,10 @@ def boss_attack(character: dict, boss: dict) -> None:
     :precondition: boss must be a dictionary created by the generate_boss() function
     :postcondition: execute a boss attack
     """
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
+    if type(boss) is not dict:
+        raise TypeError("Boss must be a dictionary")
     attack_type = random.randint(1, 4)
     if attack_type == 1 and boss["prepared"] is False:
         boss['prepared'] = True
