@@ -43,5 +43,5 @@ def all_events(board: dict, character: dict, region: list) -> None:
         if random.randint(1, 4) == 1:
             events['enemy'](character)
     else:
-        raise ValueError("Board tile does not exist.")
+        raise KeyError("Board tile does not exist.")
     
