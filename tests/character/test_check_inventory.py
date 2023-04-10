@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 class TestCheckInventory(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_check_inventory(self, mock_output):
+    def test_check_inventory_output(self, mock_output):
         character = {
             'inventory': {
                 'gold': 100,
@@ -24,3 +24,7 @@ class TestCheckInventory(TestCase):
                           "Repair Kits: 1\n" \
                           "Gold: 100\n\n"
         self.assertEqual(expected_output, check_inventory_output)
+
+    def test_check_inventory_type_error(self):
+        with self.assertRaises(TypeError):
+            check_inventory(None)

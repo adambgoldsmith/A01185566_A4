@@ -21,3 +21,7 @@ class TestDisplayStats(TestCase):
         display_stats_output = mock_output.getvalue()
         expected_output = "HP: 100/100 |~| XP: 0/100 |~| Lvl: 1\n\n"
         self.assertEqual(expected_output, display_stats_output)
+
+    def test_display_stats_type_error(self):
+        with self.assertRaises(TypeError):
+            display_stats(None)

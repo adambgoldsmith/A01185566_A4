@@ -75,3 +75,7 @@ class TestLevelUp(TestCase):
                           'health': 100,
                           'attack_power': 10,
                           'ability_power': 20}, character)
+
+    def test_level_up_type_error(self):
+        with self.assertRaises(TypeError):
+            level_up(None)

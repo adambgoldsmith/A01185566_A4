@@ -18,3 +18,7 @@ class TestIsAlive(TestCase):
     def test_is_alive_false_negative(self):
         character = {'health': -50}
         self.assertEqual(False, is_alive(character))
+
+    def test_is_alive_type_error(self):
+        with self.assertRaises(TypeError):
+            is_alive(None)

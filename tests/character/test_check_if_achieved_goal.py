@@ -16,3 +16,7 @@ class TestCheckIfAchievedGoal(TestCase):
         board = {(0, 0): 'empty', (0, 1): 'empty', (1, 0): 'empty', (1, 1): 'empty'}
         character = {'X-coordinate': 0, 'Y-coordinate': 1}
         self.assertEqual(False, check_if_achieved_goal(board, character))
+
+    def test_check_if_achieved_goal_error(self):
+        with self.assertRaises(TypeError):
+            check_if_achieved_goal(None)
