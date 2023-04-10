@@ -13,8 +13,8 @@ def shop(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Commence the shop event
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     print(f"-------------------------")
     print(f"You notice a small trade ship gliding through the air. "
           f"The large wooden propeller on its roof clicks loudly with each rotation.\n"
@@ -31,8 +31,8 @@ def user_shop_choice(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Get user shop choice
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     while True:
         user_choice = input(f"\"Hello friend! Interested in my wares?\"\n"
                             f"1. Buy 2 flux (10 gold)\n"
@@ -59,7 +59,6 @@ def sufficient_gold(user_input: str, character: dict) -> None:
     :precondition: user_input must be a string
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Check if user has enough gold to buy an item
-
     >>> user_input_test = '1'
     >>> character_test = {'inventory': {'gold': 0}}
     >>> sufficient_gold(user_input_test, character_test)
@@ -68,8 +67,8 @@ def sufficient_gold(user_input: str, character: dict) -> None:
     """
     if type(user_input) is not str:
         raise TypeError("User_input must be a string")
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     if user_input == '1':
         if character['inventory']['gold'] >= 10:
             buy_flux(character)
@@ -89,7 +88,6 @@ def buy_flux(character: dict) -> None:
     :param character: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Buy flux and reduce gold
-
     >>> character_test = {'inventory': {'gold': 10, 'flux': 0}}
     >>> buy_flux(character_test)
     You bought 2 flux for 10 gold.
@@ -97,8 +95,8 @@ def buy_flux(character: dict) -> None:
     >>> character_test
     {'inventory': {'gold': 0, 'flux': 2}}
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     character['inventory']['flux'] += 2
     character['inventory']['gold'] -= 10
     print(f"You bought 2 flux for 10 gold.\n")
@@ -111,7 +109,6 @@ def buy_repair_kit(character: dict) -> None:
     :param character: A dictionary
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Buy repair kit and reduce gold
-
     >>> character_test = {'inventory': {'gold': 30, 'repair_kits': 0}}
     >>> buy_repair_kit(character_test)
     You bought a repair kit for 30 gold.
@@ -119,8 +116,8 @@ def buy_repair_kit(character: dict) -> None:
     >>> character_test
     {'inventory': {'gold': 0, 'repair_kits': 1}}
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     character['inventory']['repair_kits'] += 1
     character['inventory']['gold'] -= 30
     print(f"You bought a repair kit for 30 gold.\n")
