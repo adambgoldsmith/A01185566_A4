@@ -2,6 +2,7 @@
 Adam Goldsmith
 A01185566
 """
+import itertools
 import random
 from helper_functions.character import is_alive
 from helper_functions.character import check_inventory
@@ -45,11 +46,14 @@ def battle_loop(character: dict, enemy: dict) -> None:
     """
     if type(character) is not dict or type(enemy) is not dict:
         raise TypeError("Arguments must be correct data types")
-    while enemy['health'] > 0:
-        retreated = user_battle_selection(character, enemy)
-        if retreated:
-            break
-        if enemy['health'] > 0:
+    turns = itertools.cycle([character, enemy])
+    while enemy['health'] > 0 and is_alive(character):
+        current_turn = next(turns)
+        if current_turn == character:
+            retreated = user_battle_selection(character, enemy)
+            if retreated:
+                break
+        elif current_turn == enemy:
             enemy_attack(character, enemy)
             if not is_alive(character):
                 break
