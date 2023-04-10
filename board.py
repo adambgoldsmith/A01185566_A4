@@ -45,6 +45,10 @@ def create_events_list(rows: int, columns: int) -> list:
     :postcondition: creates a list of events
     :return: a list of events
     """
+    if type(rows) is not int:
+        raise TypeError("Rows must be an integer")
+    if type(columns) is not int:
+        raise TypeError("columns must be an integer")
     events = ['chest', 'chest', 'nymph', 'nymph', 'shop', 'shop']
     empty_events = ['empty' for _ in range(rows * columns - 8)]
     events += empty_events
@@ -64,6 +68,8 @@ def display_region(region: list) -> None:
     -------------------------
     region_name
     """
+    if type(region) is not list and len(region) < 5:
+        raise TypeError("Region must be a list with correct items")
     print(f"-------------------------")
     print(region[0])
 
@@ -79,7 +85,6 @@ def display_board(rows: int, columns: int, character: dict) -> None:
     :precondition: columns must be a positive integer greater than or equal to 3
     :precondition: character must be a dictionary created by the make_character() function
     :postcondition: prints a visual representation of the board to the screen
-
     >>> character_test = {'X-coordinate': 0, 'Y-coordinate': 0}
     >>> display_board(3, 3, character_test)
     o/ [] []
@@ -90,6 +95,12 @@ def display_board(rows: int, columns: int, character: dict) -> None:
     [] o/
     [] []
     """
+    if type(rows) is not int:
+        raise TypeError("Rows must be an integer")
+    if type(columns) is not int:
+        raise TypeError("columns must be an integer")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     character_location = (character['X-coordinate'], character['Y-coordinate'])
     for row in range(rows):
         for column in range(columns):
@@ -112,6 +123,8 @@ def describe_current_location(region: list) -> None:
     :precondition: region must be a list created by the get_region() function
     :postcondition: prints a description of the current location to the screen
     """
+    if type(region) is not list and len(region) < 5:
+        raise TypeError("Region must be a list with correct items")
     random_description = random.choice(region[1:5])
     print(random_description)
     print()
@@ -126,6 +139,8 @@ def get_user_choice(character: dict) -> str:
     :postcondition: get the user's desired direction
     :return: the user's desired direction as a string
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     options = ['1', '2', '3', '4', 'north', 'south', 'east', 'west']
     while True:
         print(f"Which direction will you travel?\n"
@@ -163,6 +178,12 @@ def validate_move(board: dict, character: dict, direction: str) -> bool:
     >>> validate_move(board_test, character_test, direction_test)
     False
     """
+    if type(board) is not dict:
+        raise TypeError("Board must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(direction) is not str:
+        raise TypeError("Direction must be a string")
     new_location = [character['X-coordinate'], character['Y-coordinate']]
     if direction == '1' or direction == 'north':
         new_location[1] -= 1
@@ -187,7 +208,6 @@ def move_character(character: dict, direction: str) -> None:
     :precondition: character must be a dictionary created by the make_character() function
     :precondition: direction must be a string: '1', 'north', '2', 'south', '3', 'east', '4', 'west'
     :postcondition: updates the coordinates of the character
-
     >>> character_test = {'X-coordinate': 0, 'Y-coordinate': 0}
     >>> direction_test = 'south'
     >>> move_character(character_test, direction_test)
@@ -199,6 +219,10 @@ def move_character(character: dict, direction: str) -> None:
     >>> character_test
     {'X-coordinate': 1, 'Y-coordinate': 0}
     """
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
+    if type(direction) is not str:
+        raise TypeError("Direction must be a string")
     if direction == '1' or direction == 'north':
         character['Y-coordinate'] -= 1
     elif direction == '2' or direction == 'south':
