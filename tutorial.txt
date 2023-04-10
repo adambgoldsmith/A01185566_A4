@@ -1,0 +1,30 @@
+ \(^_^)\  Informative tutorial  \(^_^)\
+
+ Type 1, 2, 3, 4, north, south, east, west to move in a direction.
+
+ If you encounter a chest puzzle or a nymph riddle, use the NUMBERS ONLY to answer (1, 2, 3, 4).
+
+ Nymphs and chests will disappear after you have attempted to solve them.
+
+ Shops are persistent on the board. If you find a shop, remember what tile it was on for later!
+
+ Battling is turn based. Checking your inventory is the only option that does not count as a valid move.
+ If you attempt to use an item/ability without resources or attempt to flee, it will still count as a move.
+
+ The bosses can get very difficult if you are not prepared! Make sure to explore the WHOLE map
+ and stock up on resources and levels before fighting each boss!
+
+ Good luck, Captain!
+
+                              |~
+                       |/    w
+                      / (   (|   \
+                     /( (/   |)  |\
+           ____  ( (/    (|   | )  ,
+          |----\ (/ |    /|   |'\ /^;
+    \\===\---*---Y--+-----+---+--/(
+    //^^^ \------*---*--*---*--/
+           \__________________/
+
+
+
