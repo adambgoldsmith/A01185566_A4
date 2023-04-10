@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from chest import user_puzzle_choice
+from helper_functions.chest import user_puzzle_choice
 from unittest.mock import patch
 
 

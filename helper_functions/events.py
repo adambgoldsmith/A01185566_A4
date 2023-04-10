@@ -2,10 +2,12 @@
 Adam Goldsmith
 A01185566
 """
-from chest import *
-from shop import *
-from boss import *
-from nymph import *
+import random
+from helper_functions.chest import chest
+from helper_functions.shop import shop
+from helper_functions.battle import battle
+from helper_functions.boss import boss_battle
+from helper_functions.nymph import nymph
 
 
 def all_events(board: dict, character: dict, region: list) -> None:

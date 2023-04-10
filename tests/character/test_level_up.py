@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from character import level_up
+from helper_functions.character import level_up
 from unittest.mock import patch
 
 

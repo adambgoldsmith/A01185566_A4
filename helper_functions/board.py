@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 import random
-from character import *
+from helper_functions.character import check_inventory
 
 
 def create_board(columns: int, rows: int) -> dict:

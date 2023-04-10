@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from character import check_if_achieved_goal
+from helper_functions.character import check_if_achieved_goal
 
 
 class TestCheckIfAchievedGoal(TestCase):

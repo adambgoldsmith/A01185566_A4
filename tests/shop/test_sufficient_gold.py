@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from shop import sufficient_gold
+from helper_functions.shop import sufficient_gold
 from unittest.mock import patch
 
 

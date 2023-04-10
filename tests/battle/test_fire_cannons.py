@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from battle import fire_cannons
+from helper_functions.battle import fire_cannons
 from unittest.mock import patch
 
 

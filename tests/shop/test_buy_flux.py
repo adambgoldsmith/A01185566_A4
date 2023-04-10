@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from shop import buy_flux
+from helper_functions.shop import buy_flux
 from unittest.mock import patch
 
 

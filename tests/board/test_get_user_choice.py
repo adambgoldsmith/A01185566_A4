@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from board import get_user_choice
+from helper_functions.board import get_user_choice
 from unittest.mock import patch
 
 

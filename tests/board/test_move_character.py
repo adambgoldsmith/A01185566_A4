@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from board import move_character
+from helper_functions.board import move_character
 
 
 class TestMoveCharacter(TestCase):

@@ -2,7 +2,7 @@
 Adam Goldsmith
 A01185566
 """
-from character import *
+from helper_functions.character import check_inventory
 
 
 def shop(character: dict) -> None:

@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from chest import generate_pattern
+from helper_functions.chest import generate_pattern
 from unittest.mock import patch
 
 

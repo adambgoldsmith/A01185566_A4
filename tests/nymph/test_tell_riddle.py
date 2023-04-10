@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from nymph import tell_riddle
+from helper_functions.nymph import tell_riddle
 from unittest.mock import patch
 
 

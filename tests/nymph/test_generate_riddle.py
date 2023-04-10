@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from nymph import generate_riddle
+from helper_functions.nymph import generate_riddle
 from unittest.mock import patch
 
 

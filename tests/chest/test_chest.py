@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from chest import chest
+from helper_functions.chest import chest
 from unittest.mock import patch
 
 

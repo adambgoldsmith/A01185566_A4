@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from boss import generate_boss
+from helper_functions.boss import generate_boss
 
 
 class TestGenerateBoss(TestCase):

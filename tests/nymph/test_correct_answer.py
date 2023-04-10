@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from nymph import correct_answer
+from helper_functions.nymph import correct_answer
 from unittest.mock import patch
 
 

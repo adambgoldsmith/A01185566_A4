@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from battle import roll_critical_hit
+from helper_functions.battle import roll_critical_hit
 from unittest.mock import patch
 
 

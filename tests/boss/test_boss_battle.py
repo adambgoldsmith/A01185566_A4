@@ -1,6 +1,6 @@
 import io
 from unittest import TestCase
-from boss import boss_battle
+from helper_functions.boss import boss_battle
 from unittest.mock import patch
 
 

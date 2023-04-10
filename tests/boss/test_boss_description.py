@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from boss import boss_description
+from helper_functions.boss import boss_description
 from unittest.mock import patch
 
 

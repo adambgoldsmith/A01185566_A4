@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from battle import enemy_attack
+from helper_functions.battle import enemy_attack
 from unittest.mock import patch
 
 

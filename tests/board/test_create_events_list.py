@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from board import create_events_list
+from helper_functions.board import create_events_list
 
 
 class TestCreateEventsList(TestCase):

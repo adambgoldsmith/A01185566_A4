@@ -1,5 +1,5 @@
 from unittest import TestCase
-from events import all_events
+from helper_functions.events import all_events
 from unittest.mock import patch
 
 

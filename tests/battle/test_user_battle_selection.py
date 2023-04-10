@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from battle import user_battle_selection
+from helper_functions.battle import user_battle_selection
 from unittest.mock import patch
 
 

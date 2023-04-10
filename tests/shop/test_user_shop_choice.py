@@ -1,6 +1,6 @@
 import io
 from unittest import TestCase
-from shop import user_shop_choice
+from helper_functions.shop import user_shop_choice
 from unittest.mock import patch
 
 

@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from board import describe_current_location
+from helper_functions.board import describe_current_location
 from unittest.mock import patch
 
 

@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from character import check_inventory
+from helper_functions.character import check_inventory
 from unittest.mock import patch
 
 

@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from character import display_stats
+from helper_functions.character import display_stats
 from unittest.mock import patch
 
 

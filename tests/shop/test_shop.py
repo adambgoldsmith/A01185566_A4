@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from shop import shop
+from helper_functions.shop import shop
 from unittest.mock import patch
 
 

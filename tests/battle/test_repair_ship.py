@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from battle import repair_ship
+from helper_functions.battle import repair_ship
 from unittest.mock import patch
 
 

@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from character import create_character
+from helper_functions.character import create_character
 
 
 class TestCreateCharacter(TestCase):

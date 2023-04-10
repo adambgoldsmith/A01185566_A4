@@ -4,7 +4,7 @@ A01185566
 """
 import io
 from unittest import TestCase
-from board import display_region
+from helper_functions.board import display_region
 from unittest.mock import patch
 
 

@@ -2,8 +2,9 @@
 Adam Goldsmith
 A01185566
 """
-from battle import *
-from character import *
+import random
+from helper_functions.battle import user_battle_selection
+from helper_functions.character import is_alive
 
 
 def boss_battle(character: dict, region: list) -> None:

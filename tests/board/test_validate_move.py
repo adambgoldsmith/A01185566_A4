@@ -3,7 +3,7 @@ Adam Goldsmith
 A01185566
 """
 from unittest import TestCase
-from board import validate_move
+from helper_functions.board import validate_move
 
 
 class TestValidateMove(TestCase):

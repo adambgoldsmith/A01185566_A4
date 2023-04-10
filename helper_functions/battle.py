@@ -3,7 +3,8 @@ Adam Goldsmith
 A01185566
 """
 import random
-from character import *
+from helper_functions.character import is_alive
+from helper_functions.character import check_inventory
 
 
 def battle(character: dict) -> None:
