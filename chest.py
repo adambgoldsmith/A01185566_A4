@@ -13,8 +13,8 @@ def chest(character: dict) -> None:
     :precondition: character must be a dictionary created by the create_character() function
     :postcondition: Commence the chest event
     """
-    if type(character) is not dict:
-        raise TypeError("Character must be a dictionary")
+    if type(character) is not dict and len(character) < 10:
+        raise TypeError("Character must be a dictionary with correct key/value pairs")
     print(f"-------------------------")
     print(f"Out of the corner of your eye you spot a shimmering chest on a tiny floating island.\n"
           f"You approach the chest and notice several gemstones of differing shapes above the heavy iron latch.")
@@ -31,9 +31,9 @@ def chest(character: dict) -> None:
 
 def generate_pattern() -> str:
     """
-    Generate chest puzzle
+    Generate chest pattern
 
-    **Note: This function is not complete. It is a work in progress.**
+    :return: A sequence of gemstone characters as a string
     """
     pattern = ""
     for _ in range(6):
