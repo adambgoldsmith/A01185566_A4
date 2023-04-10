@@ -130,7 +130,7 @@ def generate_boss(region: list) -> dict:
     elif region[0] == 'The Void Isles':
         return boss_three
     else:
-        raise ValueError(f'Invalid region.')
+        raise ValueError('Invalid region.')
 
 
 def boss_attack(character: dict, boss: dict) -> None:

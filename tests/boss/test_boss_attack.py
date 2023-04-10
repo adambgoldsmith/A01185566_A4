@@ -90,3 +90,7 @@ class TestBossAttack(TestCase):
         }
         boss_attack(character, boss)
         self.assertEqual(90, character['health'])
+
+    def test_boss_attack_type_error(self):
+        with self.assertRaises(TypeError):
+            boss_attack(None, None)

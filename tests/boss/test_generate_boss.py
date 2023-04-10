@@ -45,3 +45,11 @@ class TestGenerateBoss(TestCase):
             'prepared': False,
             'ability_desc': 'opens its maw and unleashes a torrent of void energy'},
             generate_boss(region))
+
+    def test_generate_boss_type_error(self):
+        with self.assertRaises(TypeError):
+            generate_boss(None)
+
+    def test_generate_boss_value_error(self):
+        with self.assertRaises(ValueError):
+            generate_boss(['invalid region'])

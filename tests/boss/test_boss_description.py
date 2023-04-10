@@ -20,3 +20,7 @@ class TestBossDescription(TestCase):
                           " view and blocks your path.\n" \
                           "You prepare for a tough battle...\n"
         self.assertEqual(expected_output, boss_description_output)
+
+    def test_boss_description_type_error(self):
+        with self.assertRaises(TypeError):
+            boss_description(None, None)

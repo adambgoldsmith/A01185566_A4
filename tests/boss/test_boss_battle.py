@@ -5,9 +5,9 @@ from unittest.mock import patch
 
 
 class TestBossBattle(TestCase):
-    @patch('boss.generate_boss', side_effect=[{'name': 'test', 'health': 0, 'attack_power': 10}])
-    @patch('boss.boss_description', side_effect=[None])
-    @patch('boss.boss_battle_loop', side_effect=[None])
+    @patch('helper_functions.boss.generate_boss', side_effect=[{'name': 'test', 'health': 0, 'attack_power': 10}])
+    @patch('helper_functions.boss.boss_description', side_effect=[None])
+    @patch('helper_functions.boss.boss_battle_loop', side_effect=[None])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_boss_battle_output(self, mock_output, _, __, ___):
         character = {
@@ -25,3 +25,7 @@ class TestBossBattle(TestCase):
                           " conquering such a formidable foe!\n" \
                           "You continue on your journey...\n"
         self.assertEqual(expected_output, boss_battle_output)
+
+    def test_boss_battle_type_error(self):
+        with self.assertRaises(TypeError):
+            boss_battle(None, None)
