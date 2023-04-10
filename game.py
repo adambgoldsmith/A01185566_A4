@@ -6,7 +6,6 @@ from helper_functions.events import all_events
 from helper_functions.lore import print_intro_lore
 from helper_functions.lore import print_end_lore
 from helper_functions.lore import get_region
-from helper_functions.board import create_character
 from helper_functions.board import create_board
 from helper_functions.board import display_region
 from helper_functions.board import display_board
@@ -14,6 +13,7 @@ from helper_functions.board import describe_current_location
 from helper_functions.board import get_user_choice
 from helper_functions.board import validate_move
 from helper_functions.board import move_character
+from helper_functions.character import create_character
 from helper_functions.character import is_alive
 from helper_functions.character import level_up
 from helper_functions.character import check_if_achieved_goal
