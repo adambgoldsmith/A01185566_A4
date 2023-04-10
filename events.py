@@ -20,6 +20,12 @@ def all_events(board: dict, character: dict, region: list) -> None:
     :precondition: Region must be a list created by the get_region() function
     :postcondition: start an event of a certain event type
     """
+    if type(board) is not dict:
+        raise TypeError("Board must be a dictionary")
+    if type(character) is not dict:
+        raise TypeError("Character must be a dictionary")
+    if type(region) is not list:
+        raise TypeError("Region must be a list")
     events = {
         'chest': chest,
         'nymph': nymph,
