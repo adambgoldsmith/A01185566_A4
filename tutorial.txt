@@ -11,8 +11,10 @@
  Battling is turn based. Checking your inventory is the only option that does not count as a valid move.
  If you attempt to use an item/ability without resources or attempt to flee, it will still count as a move.
 
+ Bosses are located in the bottom right corner of each map. Killing a boss will advance you to the next region.
+
  The bosses can get very difficult if you are not prepared! Make sure to explore the WHOLE map
- and stock up on resources and levels before fighting each boss!
+ and stock up on resources and levels before taking one on!
 
  Good luck, Captain!
 
