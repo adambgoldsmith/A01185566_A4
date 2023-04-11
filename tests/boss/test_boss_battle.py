@@ -26,6 +26,19 @@ class TestBossBattle(TestCase):
                           "You continue on your journey...\n"
         self.assertEqual(expected_output, boss_battle_output)
 
+    @patch('helper_functions.boss.generate_boss', side_effect=[{'name': 'test', 'health': 0, 'attack_power': 10}])
+    @patch('helper_functions.boss.boss_description', side_effect=[None])
+    @patch('helper_functions.boss.boss_battle_loop', side_effect=[None])
+    def test_boss_battle_gain_experience(self, _, __, ___):
+        character = {
+            'experience': 0,
+            'max_health': 100,
+            'health': 100
+        }
+        region = ['Test Region']
+        boss_battle(character, region)
+        self.assertEqual(100, character['experience'])
+
     def test_boss_battle_type_error(self):
         with self.assertRaises(TypeError):
             boss_battle(None, None)
