@@ -1,3 +1,7 @@
+"""
+Adam Goldsmith
+A01185566
+"""
 from unittest import TestCase
 from helper_functions.battle import battle_loop
 from unittest.mock import patch
