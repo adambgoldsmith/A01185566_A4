@@ -30,23 +30,21 @@ and finally, the boss theme.
 For my flowchart, I tried to avoid using programmer lingo as much as possible so that anybody could
 recreate the game even if they don't know how to code.
 
-
-
----------- REQUIRED ELEMENTS TABLE (BEST EXAMPLES) ----------
-
-(a) use of immutable data structures     ||     helper_functions.board.py line 29
-(b) use of mutable data structures       ||     helper_functions.nymph.py line 41
-(c) exceptions and exception handling    ||     helper_functions.battle.py line 89, test_user_battle_choice.py line 42
-(d) mini scope/lifetime of variables     ||     all
-(e) small, atomic functions              ||     helper_functions.character.py line 32
-(f) simple flat, readable code           ||     all
-(g) list/dictionary comprehension        ||     helper_functions.board.py line 53
-(h) selection using if statements        ||     helper_functions.board.py line 179
-(i) repetition using loops               ||     helper_functions.boss.py line 48
-(j) use of membership operator           ||     helper_functions.board.py line 145
-(k) use of the range function            ||     helper_functions.chest.py line 39
-(l) user of itertools functions          ||     helper_functions.battle.py line 49
-(m) use of the random module             ||     helper_functions.battle.py line 290
-(n) function annotation                  ||     helper_functions.board.py line 153
-(o) doctests and unittests               ||     helper_functions.board.py line 88, test_generate_pattern.py line 11
-(p) f-string formatting                  ||     helper_functions.boss.py line 80
+| required element | Location |
+| --- | --- |
+| (a) use of immutable data structures | helper_functions.board.py line 29 |
+| (b) use of mutable data structures | helper_functions.nymph.py line 41 |
+| (c) exceptions and exception handling | helper_functions.battle.py line 89, test_user_battle_choice.py line 42 |
+| (d) mini scope/lifetime of variables | everywhere |
+| (e) small, atomic functions | helper_functions.character.py line 32 |
+| (f) simple flat, readable code | everywhere |
+| (g) list/dictionary comprehension |  helper_functions.board.py line 53 |
+| (h) selection using if statements | helper_functions.board.py line 179 |
+| (i) repetition using loops | helper_functions.boss.py line 48 |
+| (j) use of membership operator | helper_functions.board.py line 145 |
+| (k) use of the range function | helper_functions.chest.py line 39 |
+| (l) user of itertools functions | helper_functions.battle.py line 49 |
+| (m) use of the random module | helper_functions.battle.py line 290 |
+| (n) function annotation | helper_functions.board.py line 153 |
+| (o) doctests and unittests | helper_functions.board.py line 88, test_generate_pattern.py line 11|
+| (p) f-string formatting | helper_functions.boss.py line 80 |
