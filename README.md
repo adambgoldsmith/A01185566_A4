@@ -1,50 +1,41 @@
-# 1510-A4
+# Nimbus Voyage (1510-A4)
+Adam Goldsmith<br>
+A01185566<br>
+adambgoldsmith<br>
 
-Every program needs a README.md
+### About
+Nimbus Voyage is a fantasy airship rpg game that was created in python and played on the command-line.
+Nimbus Voyage was created as an assignment for class 1510 at BCIT CST.
 
-This is written in markdown. Read about markdown here: [markdowncheatsheet](https://www.markdownguide.org/cheat-sheet/)
+### How to install:
+1.
 
-## Your name:
-Adam Goldsmith
+### How to play:
+ Type 1, 2, 3, 4, north, south, east, west to move in desired direction.
 
-## Your student number:
-A01185566
+ If you encounter a chest puzzle or a nymph riddle, answer using numbers only (1, 2, 3, 4).
 
-## Your GitHub ID:
-adambgoldsmith
+ Nymphs and chests will disappear after you have attempted to solve them.
 
-## Any important comments you'd like to make about your work:
-In hindsight, I ended up biting off WAY MORE than I can chew in such a small time-frame.
-Aardwolfs style plus simple surface with a complex underbelly inspired me to make something similar.
-Because I have a background with game development I wanted to push myself and see what I could create using my
-newfound knowledge of python. The scope of my project ended up being massive, and even though I managed to
-create the game flow that I wanted, it ended up leaving too many things to document and test.
+ Shops are persistent on the board. If you find a shop, remember what tile it was on for later!
 
-I tried to make the regular battle loop and the boss battle loop one function for reusability, but it caused 
-more trouble than just having two separate functions.
+ Battling is turn based. Checking your inventory is the only option that does not count as a valid move.
+ If you attempt to use an item/ability without resources or attempt to flee, it WILL count as a move.
 
-I made three songs for the game, but ended up not being able to use them due to multithreading limits for the
-assignment. One is a theme for the start and end (lore), one for the map travel game play (main over world),
-and finally, the boss theme.
+ Bosses are located in the bottom right corner of each map. Killing a boss will advance you to the next region.
 
-For my flowchart, I tried to avoid using programmer lingo as much as possible so that anybody could
-recreate the game even if they don't know how to code.
+ The bosses can get very difficult if you are not prepared! Make sure to explore the WHOLE map
+ and stock up on resources and levels before taking on the region boss!
 
-| required element | Location |
-| --- | --- |
-| (a) use of immutable data structures | helper_functions.board.py line 29 |
-| (b) use of mutable data structures | helper_functions.nymph.py line 41 |
-| (c) exceptions and exception handling | helper_functions.battle.py line 89, test_user_battle_choice.py line 42 |
-| (d) mini scope/lifetime of variables | everywhere |
-| (e) small, atomic functions | helper_functions.character.py line 32 |
-| (f) simple flat, readable code | everywhere |
-| (g) list/dictionary comprehension |  helper_functions.board.py line 53 |
-| (h) selection using if statements | helper_functions.board.py line 179 |
-| (i) repetition using loops | helper_functions.boss.py line 48 |
-| (j) use of membership operator | helper_functions.board.py line 145 |
-| (k) use of the range function | helper_functions.chest.py line 39 |
-| (l) user of itertools functions | helper_functions.battle.py line 49 |
-| (m) use of the random module | helper_functions.battle.py line 290 |
-| (n) function annotation | helper_functions.board.py line 153 |
-| (o) doctests and unittests | helper_functions.board.py line 88, test_generate_pattern.py line 11|
-| (p) f-string formatting | helper_functions.boss.py line 80 |
+ Good luck, Captain!
+
+                              |~
+                       |/    w
+                      / (   (|   \
+                     /( (/   |)  |\
+           ____  ( (/    (|   | )  ,
+          |----\ (/ |    /|   |'\ /^;
+    \\===\---*---Y--+-----+---+--/(
+    //^^^ \------*---*--*---*--/
+           \__________________/
+
