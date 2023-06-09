@@ -4,11 +4,8 @@ A01185566<br>
 adambgoldsmith<br>
 
 ### About
-Nimbus Voyage is a fantasy airship rpg game that was created in python and played on the command-line.
-Nimbus Voyage was created as an assignment for class 1510 at BCIT CST.
-
-### How to install:
-1.
+Nimbus Voyage is a fantasy airship rpg game that was created in python and played on the command-line.<br>
+Nimbus Voyage was created as an assignment for class 1510 at BCIT CST during term 1.<br>
 
 ### How to play:
  Type 1, 2, 3, 4, north, south, east, west to move in desired direction.
@@ -19,12 +16,12 @@ Nimbus Voyage was created as an assignment for class 1510 at BCIT CST.
 
  Shops are persistent on the board. If you find a shop, remember what tile it was on for later!
 
- Battling is turn based. Checking your inventory is the only option that does not count as a valid move.
+ Battling is turn based. Checking your inventory is the only option that does not count as a valid move.<br>
  If you attempt to use an item/ability without resources or attempt to flee, it WILL count as a move.
 
  Bosses are located in the bottom right corner of each map. Killing a boss will advance you to the next region.
 
- The bosses can get very difficult if you are not prepared! Make sure to explore the WHOLE map
+ The bosses can get very difficult if you are not prepared! Make sure to explore the WHOLE map<br>
  and stock up on resources and levels before taking on the region boss!
 
  Good luck, Captain!
@@ -38,4 +35,4 @@ Nimbus Voyage was created as an assignment for class 1510 at BCIT CST.
     \\===\---*---Y--+-----+---+--/(
     //^^^ \------*---*--*---*--/
            \__________________/
-
+           
