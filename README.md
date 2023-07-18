@@ -4,7 +4,7 @@ A01185566<br>
 adambgoldsmith<br>
 
 ### About
-Nimbus Voyage is a fantasy airship rpg game that was created in python and played on the command-line.<br>
+Nimbus Voyage is a fantasy airship rpg game that was created in python and is played on the command-line.<br>
 Nimbus Voyage was created as an assignment for class 1510 at BCIT CST during term 1.<br>
 
 ### How to play:
